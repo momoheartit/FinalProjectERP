@@ -17,7 +17,7 @@ public class Model {
         return (List<IncomeEntity>) incomeEntityRepository.findAllByOrderByCreatedDesc();
     }
 
-    public List<IncomeEntity> getFirstThreeIncomeRecords() {
-        return (List<IncomeEntity>) incomeEntityRepository.findFirst3ByOrderByCreatedDesc();
+    public List<IncomeEntity> findFirst3ByOrderByIdAsc() {
+        return (List<IncomeEntity>) incomeEntityRepository.findFirst3ByOrderByIdAsc();
     }
 }

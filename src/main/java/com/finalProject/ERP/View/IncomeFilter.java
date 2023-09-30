@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 import java.time.LocalDate;
 
 public class IncomeFilter extends AnchorPane {
+    
+    Button searchButton;
 
     public IncomeFilter() {
         initializeUI();
@@ -68,6 +70,10 @@ public class IncomeFilter extends AnchorPane {
             approvedDatePicker2.setVisible(isSelected);
             approvedCheckBox2.setVisible(isSelected);
         });
+        
+        // 6. sor
+        searchButton = new Button("Search");
+        gridPane.add(searchButton, 1, 5);
 
         this.getChildren().add(gridPane);
     }
@@ -80,6 +86,11 @@ public class IncomeFilter extends AnchorPane {
     private ComboBox<String> createComboBox() {
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.getItems().addAll("=", "≠", "<", ">");
+        comboBox.setValue("=");
         return comboBox;
+    }
+    
+    public Button getSearchButton() {
+        return searchButton;
     }
 }

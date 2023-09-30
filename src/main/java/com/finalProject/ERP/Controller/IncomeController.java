@@ -1,8 +1,11 @@
 package com.finalProject.ERP.Controller;
 
 import com.finalProject.ERP.AppCore;
+import com.finalProject.ERP.Model.IncomeEntity;
 import com.finalProject.ERP.Model.Model;
 import com.finalProject.ERP.View.IncomeFilter;
+import java.util.List;
+import javafx.scene.control.Button;
 
 public class IncomeController {
     
@@ -17,6 +20,18 @@ public class IncomeController {
     public void newActivity(){
         IncomeFilter incomeFilter = new IncomeFilter();
         parent.getContainer().getChildren().add(incomeFilter);
+        Button searchButton = incomeFilter.getSearchButton();
+        searchButton.setOnAction(event -> handleSearchButtonAction());
     }    
+    
+   private void handleSearchButtonAction() {
+        // Itt határozod meg, hogy mi történjen a gomb megnyomásakor
+        System.out.println("Search button pressed");
+        model.findFirst3ByOrderByIdAsc();
+        List<IncomeEntity> incomeList = model.findFirst3ByOrderByIdAsc();
+        for (IncomeEntity income : incomeList) {
+            System.out.println(income.toString());
+        }
+    }
     
 }
