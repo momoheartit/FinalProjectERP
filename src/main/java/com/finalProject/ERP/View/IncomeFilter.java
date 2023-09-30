@@ -1,96 +1,73 @@
 package com.finalProject.ERP.View;
 
+import com.finalProject.ERP.Model.IncomeEntity;
+import com.finalProject.ERP.View.GUI.InputCheckBox;
+import com.finalProject.ERP.View.GUI.InputComboBox;
+import com.finalProject.ERP.View.GUI.InputDatePicker;
+import com.finalProject.ERP.View.GUI.InputField;
+import com.finalProject.ERP.View.GUI.InputForm;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 
-import java.time.LocalDate;
-
-public class IncomeFilter extends AnchorPane {
+public class IncomeFilter extends InputForm {
     
-    Button searchButton;
+    private IncomeEntity instance;
 
-    public IncomeFilter() {
+    public IncomeFilter(Pane parent) {
+        super(parent);
         initializeUI();
     }
 
     private void initializeUI() {
-        GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-
         // 1. sor
-        gridPane.add(new Label("ID"), 0, 0);
-        gridPane.add(createNumberTextField(), 1, 0);
-        ComboBox<String> idComboBox = createComboBox();
-        gridPane.add(idComboBox, 2, 0);
+        add("id", new InputField("ID"), 0, 0);
+        add("idComboBox", new InputComboBox(null, new String[]{"=", "≠", "<", ">"}), 0, 1);
 
         // 2. sor
-        gridPane.add(new Label("Partner"), 0, 1);
-        gridPane.add(createNumberTextField(), 1, 1);
-        ComboBox<String> partnerComboBox = createComboBox();
-        gridPane.add(partnerComboBox, 2, 1);
+        add("partner", new InputField("Partner"), 1, 0);
+        add("partnerComboBox", new InputComboBox(null, new String[]{"=", "≠", "<", ">"}), 1, 1);
 
         // 3. sor
-        gridPane.add(new Label("Amount"), 0, 2);
-        gridPane.add(createNumberTextField(), 1, 2);
-        gridPane.add(createNumberTextField(), 2, 2);
-        ComboBox<String> amountComboBox = createComboBox();
-        gridPane.add(amountComboBox, 3, 2);
+        add("amount1", new InputField("Amount"), 2, 0);
+        add("amount2", new InputField(null), 2, 1);
+        add("amountComboBox", new InputComboBox(null, new String[]{"=", "≠", "<", ">"}), 2, 2);
 
         // 4. sor
-        gridPane.add(new Label("Created"), 0, 3);
-        gridPane.add(new DatePicker(), 1, 3);
-        gridPane.add(new DatePicker(), 2, 3);
-        ComboBox<String> createdComboBox = createComboBox();
-        gridPane.add(createdComboBox, 3, 3);
+        add("created1", new InputDatePicker("Created"), 3, 0);
+        add("created2", new InputDatePicker(null), 3, 1);
+        add("createdComboBox", new InputComboBox(null, new String[]{"=", "≠", "<", ">"}), 3, 2);
 
         // 5. sor
-        gridPane.add(new Label("Approved"), 0, 4);
-        CheckBox approvedCheckBox = new CheckBox();
-        gridPane.add(approvedCheckBox, 1, 4);
+        add("approvedCheckBox", new InputCheckBox("Approved"), 4, 0);
+        add("approvedDatePicker1", new InputDatePicker(null), 4, 1);
+        add("approvedDatePicker2", new InputDatePicker(null), 4, 2);
+        add("approvedCheckBox2", new InputCheckBox(null), 4, 3);
 
-        DatePicker approvedDatePicker1 = new DatePicker();
-        DatePicker approvedDatePicker2 = new DatePicker();
-        CheckBox approvedCheckBox2 = new CheckBox();
-
-        approvedDatePicker1.setVisible(false);
-        approvedDatePicker2.setVisible(false);
-        approvedCheckBox2.setVisible(false);
-
-        gridPane.add(approvedDatePicker1, 2, 4);
-        gridPane.add(approvedDatePicker2, 3, 4);
-        gridPane.add(approvedCheckBox2, 4, 4);
-
-        approvedCheckBox.setOnAction(event -> {
-            boolean isSelected = approvedCheckBox.isSelected();
-            approvedDatePicker1.setVisible(isSelected);
-            approvedDatePicker2.setVisible(isSelected);
-            approvedCheckBox2.setVisible(isSelected);
-        });
-        
         // 6. sor
-        searchButton = new Button("Search");
-        gridPane.add(searchButton, 1, 5);
+        button("Search", form -> {
+            System.out.println("múködik");
+            /*String id = form.getValue("id");
+            String idComparator = form.getValue("idComboBox");
 
-        this.getChildren().add(gridPane);
-    }
+            String partner = form.getValue("partner");
+            String partnerComparator = form.getValue("partnerComboBox");
 
-    private TextField createNumberTextField() {
-        TextField textField = new TextField();
-        return textField;
-    }
+            String amount1 = form.getValue("amount1");
+            String amount2 = form.getValue("amount2");
+            String amountComparator = form.getValue("amountComboBox");
 
-    private ComboBox<String> createComboBox() {
-        ComboBox<String> comboBox = new ComboBox<>();
-        comboBox.getItems().addAll("=", "≠", "<", ">");
-        comboBox.setValue("=");
-        return comboBox;
+            String created1 = form.getValue("created1");
+            String created2 = form.getValue("created2");
+            String createdComparator = form.getValue("createdComboBox");
+
+            boolean isApproved = form.getValue("approvedCheckBox").equals("true");
+            String approved1 = form.getValue("approvedDatePicker1");
+            String approved2 = form.getValue("approvedDatePicker2");
+            boolean isApproved2 = form.getValue("approvedCheckBox2").equals("true");*/
+        }, 5, 0);
     }
     
-    public Button getSearchButton() {
-        return searchButton;
-    }
+       
+    
 }

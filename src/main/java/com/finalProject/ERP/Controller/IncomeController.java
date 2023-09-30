@@ -18,16 +18,14 @@ public class IncomeController {
     }
     
     public void newActivity(){
-        IncomeFilter incomeFilter = new IncomeFilter();
-        parent.getContainer().getChildren().add(incomeFilter);
-        Button searchButton = incomeFilter.getSearchButton();
-        searchButton.setOnAction(event -> handleSearchButtonAction());
+        
+        IncomeFilter incomeFilter = new IncomeFilter(parent.getContainer());
+        List<IncomeEntity> incomes = model.findFirst3ByOrderByIdAsc();
     }    
     
    private void handleSearchButtonAction() {
         // Itt határozod meg, hogy mi történjen a gomb megnyomásakor
         System.out.println("Search button pressed");
-        model.findFirst3ByOrderByIdAsc();
         List<IncomeEntity> incomeList = model.findFirst3ByOrderByIdAsc();
         for (IncomeEntity income : incomeList) {
             System.out.println(income.toString());

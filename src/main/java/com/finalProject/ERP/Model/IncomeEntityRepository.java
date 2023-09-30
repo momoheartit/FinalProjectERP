@@ -7,4 +7,5 @@ public interface IncomeEntityRepository extends CrudRepository<IncomeEntity, Int
     IncomeEntity save (IncomeEntity incomeEntity);
     List<IncomeEntity> findAllByOrderByCreatedDesc();
     List<IncomeEntity> findFirst3ByOrderByIdAsc();
+    List<IncomeEntity> findAll();
 }
