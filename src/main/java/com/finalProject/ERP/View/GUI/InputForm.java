@@ -19,6 +19,17 @@ public class InputForm extends GridPane {
         setVgap(10);
         setPadding(new Insets(10, 10, 10, 10));
     }
+    
+        public HashMap<String, String> getFilledValues() {
+        HashMap<String, String> filledValues = new HashMap<>();
+
+        fields.forEach((key, field) -> {
+            String value = field.getValue();
+            filledValues.put(key, value);
+        });
+
+        return filledValues;
+    }
 
     public void add(String key, InputField field, int row, int col) {
         fields.put(key, field);
