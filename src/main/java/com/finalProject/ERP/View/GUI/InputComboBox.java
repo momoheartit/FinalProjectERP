@@ -10,32 +10,41 @@ public class InputComboBox extends InputField {
         setOptions(options);
     }
 
+    public InputComboBox(String text) {
+        super(text);
+        setOptions(new String[]{"=", "!=", ">", "<"}); // Alapértelmezett értékek
+    }
+
     public void setOptions(String[] options) {
         ComboBox<String> box = (ComboBox<String>) field;
         var items = box.getItems();
 
+        items.clear();
+
         for (String option : options) {
             items.add(option);
         }
-        setValue("0");
+
+        // Ha van legalább egy opció, akkor állítsd be az alapértelmezett értéket
+        if (!items.isEmpty()) {
+            setValue(items.get(0));
+        }
     }
 
     @Override
     public void setValue(String value) {
-        ComboBox<String> box = (ComboBox<String>) field;
-        int index = value.equals("") ? 0 : Integer.parseInt(value);
-        box.getSelectionModel().select(index);
+        ComboBox box = (ComboBox) field;
+        box.getSelectionModel().select(value);
     }
 
     @Override
     public String getValue() {
-        ComboBox<String> box = (ComboBox<String>) field;
-        int index = box.getSelectionModel().getSelectedIndex();
-        return Integer.toString(index);
+        ComboBox box = (ComboBox) field;
+        return (String) box.getSelectionModel().getSelectedItem();
     }
 
     @Override
     protected Control createField() {
-        return new ComboBox<>();
+        return new ComboBox();
     }
 }

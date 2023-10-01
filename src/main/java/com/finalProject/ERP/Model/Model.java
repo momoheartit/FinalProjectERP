@@ -31,15 +31,10 @@ public class Model {
         return (List<IncomeEntity>) incomeEntityRepository.findFirst3ByOrderByIdAsc();
     }
 
-    public List<IncomeEntity> performCustomQuery(List<IncomeEntity> jpqlQuery) {
-        // Itt hozz létre egy Query objektumot az EntityManager segítségével
-        // Fontos, hogy a jpqlQuery egy listát tartalmaz, és itt létrehozunk egy JPQL lekérdezést,
-        // amelyet az IN operátorral állítunk elő, majd az adatokat beállítjuk a paraméternek.
-        String queryString = "SELECT i FROM IncomeEntity i WHERE i IN :entities";
-        Query query = entityManager.createQuery(queryString);
-        query.setParameter("entities", jpqlQuery);
+    public List<IncomeEntity> getFilteredIncome(String jpqlQuery) {
+        Query query = entityManager.createQuery(jpqlQuery, IncomeEntity.class);
+        // itt még eventuális paramétereket is hozzáadhatsz a lekérdezéshez, ha szükséges
 
-        // Futtasd le a lekérdezést és adj vissza egy listát az eredményekkel
         return query.getResultList();
     }
 

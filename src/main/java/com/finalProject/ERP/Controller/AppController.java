@@ -28,7 +28,7 @@ public class AppController implements Initializable {
     @FXML
     void loadIncomeFilter(){
         System.out.println("=== loadIncomeFilter pushed ===");
-        incomeController.newActivity();
+        incomeController.newFilter();
         
     }
 
@@ -56,5 +56,9 @@ public class AppController implements Initializable {
     
     public AnchorPane getContainer() {
         return inputController;
+    }
+    
+       public void initView() {
+        inputController.getChildren().clear();
     }
 }

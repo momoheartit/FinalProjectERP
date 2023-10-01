@@ -61,6 +61,10 @@ public class IncomeEntity {
         if (approved == null){return null;}
         return approved;
     }
+    
+    public String getPartnerName(){
+        return partner.getName();
+    }
 
     public void setPartner(PartnerEntity partner) {
         this.partner = partner;
@@ -84,8 +88,15 @@ public class IncomeEntity {
 
     @Override
     public String toString() {
-        return "IncomeEntity{" + "id=" + id + ", partner=" + partner + ", amount=" + amount + ", project=" + project + ", created=" + created + ", approved=" + approved + '}';
+        return "IncomeEntity{" + "id=" + id + 
+                ", partner=" + partner + 
+                ", amount=" + amount + 
+                ", project=" + project + 
+                ", created=" + created + 
+                ", approved=" + approved + '}';
     }
+
+    
     
     
 }

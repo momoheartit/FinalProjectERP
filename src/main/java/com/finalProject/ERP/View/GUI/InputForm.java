@@ -19,8 +19,8 @@ public class InputForm extends GridPane {
         setVgap(10);
         setPadding(new Insets(10, 10, 10, 10));
     }
-    
-        public HashMap<String, String> getFilledValues() {
+
+    public HashMap<String, String> getFilledValues() {
         HashMap<String, String> filledValues = new HashMap<>();
 
         fields.forEach((key, field) -> {
@@ -31,6 +31,13 @@ public class InputForm extends GridPane {
         return filledValues;
     }
 
+    public void setComboBoxOptions(String key, String[] options) {
+        InputComboBox comboBox = (InputComboBox) fields.get(key);
+        if (comboBox != null) {
+            comboBox.setOptions(options);
+        }
+    }
+
     public void add(String key, InputField field, int row, int col) {
         fields.put(key, field);
 
@@ -39,6 +46,7 @@ public class InputForm extends GridPane {
             // Ha ComboBox, akkor hozzáadás két oszlopban
             add(field.getLabel(), col, row);
             add(field.getField(), col + 1, row);
+            setComboBoxOptions(key, new String[]{"=", "!=", "<", ">"});
         } else if (field instanceof InputDatePicker) {
             // Ha DatePicker, akkor hozzáadás két oszlopban
             add(field.getLabel(), col, row);
