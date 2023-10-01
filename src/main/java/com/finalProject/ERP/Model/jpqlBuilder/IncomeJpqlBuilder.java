@@ -1,5 +1,6 @@
 package com.finalProject.ERP.Model.jpqlBuilder;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class IncomeJpqlBuilder {
@@ -18,24 +19,34 @@ public class IncomeJpqlBuilder {
 
                 jpqlQuery.append(" i.").append(condition.getName());
 
-                switch (condition.getComboBoxValue()) {
-                    case "=":
-                        jpqlQuery.append(" =");
-                        break;
-                    case "!=":
-                        jpqlQuery.append(" <>");
-                        break;
-                    case "<":
-                        jpqlQuery.append(" <");
-                        break;
-                    case ">":
-                        jpqlQuery.append(" >");
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
-                }
+                // A project típusú érték esetén mindig LIKE típusú legyen a feltétel
+                if (condition.getName().equals("project")) {
+                    jpqlQuery.append(" LIKE '%").append(condition.getValue()).append("%'");
+                } else {
+                    switch (condition.getComboBoxValue()) {
+                        case "=":
+                            jpqlQuery.append(" =");
+                            break;
+                        case "!=":
+                            jpqlQuery.append(" <>");
+                            break;
+                        case "<":
+                            jpqlQuery.append(" <");
+                            break;
+                        case ">":
+                            jpqlQuery.append(" >");
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
+                    }
 
-                jpqlQuery.append(" ").append(condition.getValue());
+                    // Ha a feltétel dátum típusú, akkor idézőjelek között kell lennie
+                    if (condition.isDate()) {
+                        jpqlQuery.append(" '").append(condition.getValue()).append("'");
+                    } else {
+                        jpqlQuery.append(" ").append(condition.getValue());
+                    }
+                }
             }
         }
 

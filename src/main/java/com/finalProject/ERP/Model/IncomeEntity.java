@@ -1,6 +1,7 @@
 package com.finalProject.ERP.Model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -19,13 +20,13 @@ public class IncomeEntity {
     private int amount;
     private String project;
     
-    @Column(name = "created", columnDefinition = "TIMESTAMP")
-    private LocalDateTime created;
+    @Column(name = "created")
+    private LocalDate created;
     
-    @Column(name = "approved", columnDefinition = "TIMESTAMP")
-    private LocalDateTime approved;
+    @Column(name = "approved")
+    private LocalDate approved;
 
-    public IncomeEntity(int amount, String project, LocalDateTime created) {
+    public IncomeEntity(int amount, String project, LocalDate created) {
         this.amount = amount;
         this.project = project;
         this.created = created;
@@ -53,11 +54,11 @@ public class IncomeEntity {
         return project;
     }
 
-    public LocalDateTime getCreated() {
+    public LocalDate getCreated() {
         return created;
     }
 
-    public LocalDateTime getApproved() {
+    public LocalDate getApproved() {
         if (approved == null){return null;}
         return approved;
     }
@@ -78,11 +79,11 @@ public class IncomeEntity {
         this.project = project;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(LocalDate created) {
         this.created = created;
     }
 
-    public void setApproved(LocalDateTime approved) {
+    public void setApproved(LocalDate approved) {
         this.approved = approved;
     }
 
