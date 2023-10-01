@@ -29,45 +29,53 @@ public class IncomeController {
         IncomeFilter incomeFilter = new IncomeFilter(parent.getContainer(), this, model);
     }
 
-    public void handleSearchButtonClick(InputForm form) {
-        List<IncomeCondition> filteredList = IncomeCondition.createConditionsList(form);
+public void handleSearchButtonClick(InputForm form) {
+    List<IncomeCondition> filteredList = IncomeCondition.createConditionsList(form);
+
+    // Létrehozzuk a JPQL lekérdezést
+    jpqlQuery = incomeJpqlBuilder.buildQuery(filteredList);
+
+    if (jpqlQuery != null) {
+        System.out.println("JPQL lekérdezés: " + jpqlQuery);
+
+        // Most használjuk a Model-t az adatok lekérdezésére
+        List<IncomeEntity> filteredIncome = model.getFilteredIncome(jpqlQuery, filteredList);
+
+        // Kiírjuk az eredményeket a konzolon
+        System.out.println("Szűrt eredmények:");
+        for (IncomeEntity income : filteredIncome) {
+            System.out.println("ID: " + income.getId() + ", Partner: " + income.getPartner() + ", Amount: " + income.getAmount());
+            // Egyéb adatok kiírása...
+        }
+
+        // Átadjuk a szűrt listát a showFiltered metódusnak
+        showFiltered(filteredList);
+    } else {
+        System.out.println("A JPQL lekérdezés null.");
+    }
+}
+
+
+    public void showFiltered(List<IncomeCondition> filteredList) {
+        parent.initView();
 
         // Létrehozzuk a JPQL lekérdezést
-        jpqlQuery = incomeJpqlBuilder.buildQuery(filteredList);
+        String jpqlQuery = incomeJpqlBuilder.buildQuery(filteredList);
 
         if (jpqlQuery != null) {
-            System.out.println("JPQL lekérdezés: " + jpqlQuery);
-
             // Most használjuk a Model-t az adatok lekérdezésére
-            List<IncomeEntity> filteredIncome = model.getFilteredIncome(jpqlQuery);
+            List<IncomeEntity> incomes = model.getFilteredIncome(jpqlQuery, filteredList);
 
-            // Kiírjuk az eredményeket a konzolon
-            System.out.println("Szűrt eredmények:");
-            for (IncomeEntity income : filteredIncome) {
-                System.out.println("ID: " + income.getId() + ", Partner: " + income.getPartner() + ", Amount: " + income.getAmount());
-                // Egyéb adatok kiírása...
-            }
+            IncomeTable table = new IncomeTable(parent.getContainer());
+            table.setItems(incomes);
+
+            table.addActionColumn("...", (incomeEntity, index) -> {
+                //editActivity(project);
+                System.out.println("Edit megnyomva");
+            });
         } else {
             System.out.println("A JPQL lekérdezés null.");
         }
-        
-        showFiltered();
-    }
-
-    public void showFiltered() {
-        parent.initView();
-        
-        List<IncomeEntity> incomes = model.getFilteredIncome(jpqlQuery);
-        
-        IncomeTable table = new IncomeTable(parent.getContainer());
-        table.setItems(incomes);
-        
-        table.addActionColumn("...", (incomeEntity, index)
-                -> {
-            //editActivity(project);
-            System.out.println("Edit megnyomva");
-        });
-        
     }
 
     public Model getModel() {

@@ -1,10 +1,12 @@
 package com.finalProject.ERP.Model;
 
+import com.finalProject.ERP.Model.jpqlBuilder.IncomeCondition;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import jakarta.persistence.Query;
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -31,9 +33,19 @@ public class Model {
         return (List<IncomeEntity>) incomeEntityRepository.findFirst3ByOrderByIdAsc();
     }
 
-    public List<IncomeEntity> getFilteredIncome(String jpqlQuery) {
+    public List<IncomeEntity> getFilteredIncome(String jpqlQuery, List<IncomeCondition> conditions) {
         Query query = entityManager.createQuery(jpqlQuery, IncomeEntity.class);
-        // itt még eventuális paramétereket is hozzáadhatsz a lekérdezéshez, ha szükséges
+
+        // Paraméterek hozzáadása, ha vannak
+        for (IncomeCondition condition : conditions) {
+            if (condition.isDate()) {
+                // Ha a feltétel dátum típusú, akkor adj hozzá egy LocalDate paramétert
+                query.setParameter(condition.getName(), LocalDate.parse(condition.getValue()));
+            } else {
+                // A továbbiak, ahogy eddig
+                query.setParameter(condition.getName(), condition.getValue());
+            }
+        }
 
         return query.getResultList();
     }

@@ -1,7 +1,7 @@
 package com.finalProject.ERP.Model.jpqlBuilder;
 
 import com.finalProject.ERP.View.GUI.InputForm;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,6 @@ public class IncomeCondition {
     private String comboBoxValue;
     private String value;
     private boolean isDate;
-    private LocalDateTime dateValue;
 
     public IncomeCondition(String name, String comboBoxValue, String value, boolean isDate) {
         this.name = name;
@@ -22,6 +21,8 @@ public class IncomeCondition {
 
         if (isDate) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate parsedDate = LocalDate.parse(value, formatter);
+
         }
 
     }
@@ -66,11 +67,16 @@ public class IncomeCondition {
         conditionsList.add(new IncomeCondition("project", form.getValue("projectComboBox"), form.getValue("project"), false));
 
         // Created
-        conditionsList.add(new IncomeCondition("created", form.getValue("createdComboBox"), form.getValue("created"), true));
+        String createdValue = form.getValue("created");
+        if (createdValue != null) {
+            conditionsList.add(new IncomeCondition("created", form.getValue("createdComboBox"), createdValue, true));
+        }
 
         // Approved
-        conditionsList.add(new IncomeCondition("approved", form.getValue("approvedComboBox"), form.getValue("approved"), true));
-
+        String approvedValue = form.getValue("approved");
+        if (approvedValue != null) {
+            conditionsList.add(new IncomeCondition("approved", form.getValue("approvedComboBox"), approvedValue, true));
+        }
         // Filtered list létrehozása
         List<IncomeCondition> filteredList = new ArrayList<>();
 

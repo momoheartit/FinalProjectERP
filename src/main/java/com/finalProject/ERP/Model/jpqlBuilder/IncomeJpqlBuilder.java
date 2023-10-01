@@ -42,7 +42,8 @@ public class IncomeJpqlBuilder {
 
                     // Ha a feltétel dátum típusú, akkor idézőjelek között kell lennie
                     if (condition.isDate()) {
-                        jpqlQuery.append(" '").append(condition.getValue()).append("'");
+                        // Ha a feltétel dátum típusú, akkor helyettesítsd a helyét egy paraméterrel
+                        jpqlQuery.append(" :").append(condition.getName());
                     } else {
                         jpqlQuery.append(" ").append(condition.getValue());
                     }
