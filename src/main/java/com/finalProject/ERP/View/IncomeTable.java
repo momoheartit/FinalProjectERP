@@ -3,16 +3,21 @@ package com.finalProject.ERP.View;
 import com.finalProject.ERP.Model.Export.IncomeExcel;
 import com.finalProject.ERP.Model.IncomeEntity;
 import com.finalProject.ERP.View.GUI.Table;
+import java.io.File;
 import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class IncomeTable extends Table<IncomeEntity> {
 
     public IncomeTable(Pane parent) {
         super(parent);
-        
+
         // VBox létrehozása
         VBox vbox = new VBox();
 
@@ -45,10 +50,23 @@ public class IncomeTable extends Table<IncomeEntity> {
             items.add(income);
         }
     }
-    
-    private void exportToExcel(){
-        System.out.println("teszem excelbe asszonyom!");
+
+    private void exportToExcel() {
         List<IncomeEntity> data = getItems();
-        IncomeExcel.exportToExcel(data, "C:/Users/forAndroid/Desktop/IncomeData.xlsx");
+
+        // Fájlkiválasztó dialógus inicializálása
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Mentés");
+
+        // A mentés helyének kiválasztása
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel fájlok (*.xlsx)", "*.xlsx"));
+        File file = fileChooser.showSaveDialog(new Stage());
+
+        if (file != null) {
+            // A kiválasztott helyen mentés
+            String filePath = file.getAbsolutePath();
+            IncomeExcel.exportToExcel(data, filePath);
+        }
     }
+
 }
