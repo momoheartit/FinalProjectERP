@@ -27,9 +27,12 @@ public class AppController implements Initializable {
     
     @FXML
     void loadIncomeFilter(){
-        System.out.println("=== loadIncomeFilter pushed ===");
         incomeController.newFilter();
-        
+    }
+    
+    @FXML
+    public void newIncome(){
+        incomeController.newIncome();
     }
 
     private void updateDateTimeLabel() {

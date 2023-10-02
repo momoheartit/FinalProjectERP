@@ -25,12 +25,20 @@ public class Model {
         return entityManager;
     }
 
+    public void save(IncomeEntity income) {
+        incomeEntityRepository.save(income);
+    }
+
     public List<IncomeEntity> getAllIncome() {
         return (List<IncomeEntity>) incomeEntityRepository.findAllByOrderByCreatedDesc();
     }
 
     public List<IncomeEntity> findFirst3ByOrderByIdAsc() {
         return (List<IncomeEntity>) incomeEntityRepository.findFirst3ByOrderByIdAsc();
+    }
+
+    public List<PartnerEntity> getPartners() {
+        return partnerEntityRepository.findAllByOrderById();
     }
 
     public List<IncomeEntity> getFilteredIncome(String jpqlQuery, List<IncomeCondition> conditions) {
@@ -49,4 +57,5 @@ public class Model {
 
         return query.getResultList();
     }
+
 }

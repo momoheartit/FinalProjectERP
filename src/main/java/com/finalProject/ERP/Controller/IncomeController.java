@@ -3,10 +3,12 @@ package com.finalProject.ERP.Controller;
 import com.finalProject.ERP.AppCore;
 import com.finalProject.ERP.Model.IncomeEntity;
 import com.finalProject.ERP.Model.Model;
+import com.finalProject.ERP.Model.PartnerEntity;
 import com.finalProject.ERP.Model.jpqlBuilder.IncomeCondition;
 import com.finalProject.ERP.Model.jpqlBuilder.IncomeJpqlBuilder;
 import com.finalProject.ERP.View.GUI.InputForm;
 import com.finalProject.ERP.View.IncomeFilter;
+import com.finalProject.ERP.View.IncomeForm;
 import com.finalProject.ERP.View.IncomeTable;
 
 import java.util.List;
@@ -22,6 +24,19 @@ public class IncomeController {
         this.parent = parent;
         model = AppCore.getContext().getBean(Model.class);
         incomeJpqlBuilder = new IncomeJpqlBuilder();
+    }
+
+    public void newIncome() {
+        parent.initView();
+        
+        List<PartnerEntity> partners = model.getPartners();
+        
+        IncomeForm form = new IncomeForm(parent.getContainer(), partners);
+        
+        form.submit("Save", inc -> {
+            model.save(inc);
+            form.clear();
+        });
     }
 
     public void newFilter() {
@@ -68,12 +83,24 @@ public class IncomeController {
             table.setItems(incomes);
 
             table.addActionColumn("...", (incomeEntity, index) -> {
-                //editActivity(project);
-                System.out.println("Edit megnyomva");
+                editIncome(incomeEntity);
             });
         } else {
             System.out.println("A JPQL lekérdezés null.");
         }
+    }
+
+    public void editIncome(IncomeEntity income) {
+        parent.initView();
+        
+        List<PartnerEntity> partners = model.getPartners();
+        IncomeForm form = new IncomeForm(parent.getContainer(), partners);
+        form.setValues(income);
+        form.submit("Save", inc
+                -> {
+            model.save(inc);
+            //itt szeretném meghívni a showfiltered-et!
+        });
     }
 
     public Model getModel() {

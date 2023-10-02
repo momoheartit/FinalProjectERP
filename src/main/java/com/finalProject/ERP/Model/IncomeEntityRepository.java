@@ -9,3 +9,5 @@ public interface IncomeEntityRepository extends CrudRepository<IncomeEntity, Int
     List<IncomeEntity> findFirst3ByOrderByIdAsc();
     List<IncomeEntity> findAll();
 }
+    
+    

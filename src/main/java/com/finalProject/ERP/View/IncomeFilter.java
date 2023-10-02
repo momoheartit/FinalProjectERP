@@ -2,18 +2,13 @@ package com.finalProject.ERP.View;
 
 import com.finalProject.ERP.Controller.IncomeController;
 import com.finalProject.ERP.Model.Model;
-import com.finalProject.ERP.Model.jpqlBuilder.IncomeCondition;
 import com.finalProject.ERP.Model.jpqlBuilder.IncomeJpqlBuilder;
 import com.finalProject.ERP.View.GUI.InputComboBox;
 import com.finalProject.ERP.View.GUI.InputDatePicker;
 import com.finalProject.ERP.View.GUI.InputField;
 import com.finalProject.ERP.View.GUI.InputForm;
-import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class IncomeFilter extends InputForm {
 

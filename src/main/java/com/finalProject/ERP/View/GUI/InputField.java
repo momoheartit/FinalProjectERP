@@ -23,6 +23,10 @@ public class InputField {
         return label;
     }
 
+    public void setField(Control field) {
+        this.field = field;
+    }
+
     public Control getField() {
         return field;
     }
@@ -40,15 +44,31 @@ public class InputField {
             return (selectedItem != null) ? selectedItem.toString() : null;
         }
 
-        // Egyéb esetek kezelése
-        // ...
-
         return null;
     }
 
+//    public void setValue(String value) {
+//        TextInputControl control = (TextInputControl) field;
+//        control.setText(value);
+//    }
     public void setValue(String value) {
-        TextInputControl control = (TextInputControl) field;
-        control.setText(value);
+        if (field instanceof TextInputControl) {
+            TextInputControl textInputControl = (TextInputControl) field;
+            textInputControl.setText(value);
+        } else if (field instanceof DatePicker) {
+            DatePicker datePicker = (DatePicker) field;
+            // Az érték beállítása csak akkor, ha a value nem null
+            if (value != null) {
+                datePicker.setValue(LocalDate.parse(value));
+            }
+        } else if (field instanceof CheckBox) {
+            CheckBox checkBox = (CheckBox) field;
+            checkBox.setSelected(Boolean.parseBoolean(value));
+
+        } else {
+            // Egyéb esetek kezelése
+            // ...
+        }
     }
 
     public void setPlaceholder(String placeholder) {

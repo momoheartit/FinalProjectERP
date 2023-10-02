@@ -6,13 +6,19 @@ import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 
 public class InputDatePicker extends InputField {
-
+    
     public InputDatePicker(String text) {
         super(text);
     }
     
-    //@Override
-    public void setPickedValue(LocalDateTime value) {
+//    //@Override
+//    public void setPickedValue(LocalDateTime value) {
+//        DatePicker datePicker = (DatePicker) getField();
+//        datePicker.setValue(value.toLocalDate());
+//    }
+    
+        //@Override
+    public void setValue(LocalDateTime value) {
         DatePicker datePicker = (DatePicker) getField();
         datePicker.setValue(value.toLocalDate());
     }
@@ -31,4 +37,5 @@ public class InputDatePicker extends InputField {
     protected Control createField() {
         return new DatePicker();
     }
+    
 }
