@@ -14,7 +14,7 @@ import com.finalProject.ERP.View.IncomeTable;
 import java.util.List;
 
 public class IncomeController {
-
+    public List<IncomeCondition> filteredList;
     private AppController parent;
     private Model model;
     private IncomeJpqlBuilder incomeJpqlBuilder;
@@ -99,7 +99,7 @@ public class IncomeController {
         form.submit("Save", inc
                 -> {
             model.save(inc);
-            //itt szeretném meghívni a showfiltered-et!
+            showFiltered(filteredList);
         });
     }
 

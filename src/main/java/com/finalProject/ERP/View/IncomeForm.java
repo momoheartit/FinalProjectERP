@@ -32,15 +32,20 @@ public class IncomeForm extends InputForm {
     public void setValues(IncomeEntity income) {
         // Az értékek beállítása az adott IncomeEntity alapján
 
-        int partnerIndex = 0;
-        int partnerId = income.getPartner().getId();
-        for (int i = 0; i < partners.size(); i++) {
-            if (partners.get(i).getId() == partnerId) {
-                partnerIndex = i;
-                break;
-            }
+//        int partnerIndex = 0;
+//        int partnerId = income.getPartner().getId();
+//        for (int i = 0; i < partners.size(); i++) {
+//            if (partners.get(i).getId() == partnerId) {
+//                partnerIndex = i;
+//                break;
+//            }
+//        }
+        
+        PartnerEntity partner = income.getPartner();
+        if (partner != null) {
+            setValue("partner", Integer.toString(partner.getId()));
         }
-        setValue("partner", Integer.toString(partnerIndex));
+        //setValue("partner", Integer.toString(partnerIndex));
         setValue("amount", Integer.toString(income.getAmount()));
         setValue("project", income.getProject());
         setValue("created", income.getCreated().toString());
@@ -57,12 +62,13 @@ public class IncomeForm extends InputForm {
                 instance = new IncomeEntity();
             }
 
-            int partnerX = Integer.parseInt(form.getValue("partner"));
+            int partnerX = Integer.parseInt(form.getValue("partner"))-1;
             PartnerEntity partner = partners.get(partnerX);
             instance.setPartner(partner);
 
             instance.setAmount(Integer.parseInt(form.getValue("amount")));
             instance.setProject(form.getValue("project"));
+            instance.setCreated(LocalDate.parse(form.getValue("created")));
             if (form.getValue("approved") != null && !form.getValue("approved").isEmpty()) {
                 instance.setApproved(LocalDate.parse(form.getValue("approved")));
             } else {
