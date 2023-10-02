@@ -22,7 +22,6 @@ public class IncomeCondition {
         if (isDate) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate parsedDate = LocalDate.parse(value, formatter);
-
         }
 
     }
@@ -86,7 +85,9 @@ public class IncomeCondition {
                 filteredList.add(condition);
             }
         }
-
+        
+        System.out.println("filteredList tartalma: " + filteredList);
         return filteredList;
+        
     }
 }

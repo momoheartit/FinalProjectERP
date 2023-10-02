@@ -39,15 +39,14 @@ public class Model {
         // Paraméterek hozzáadása, ha vannak
         for (IncomeCondition condition : conditions) {
             if (condition.isDate()) {
-                // Ha a feltétel dátum típusú, akkor adj hozzá egy LocalDate paramétert
+                //Ha a feltétel dátum típusú, akkor adj hozzá egy LocalDate paramétert
                 query.setParameter(condition.getName(), LocalDate.parse(condition.getValue()));
             } else {
-                // A továbbiak, ahogy eddig
+                //A továbbiak, ahogy eddig
                 query.setParameter(condition.getName(), condition.getValue());
             }
         }
 
         return query.getResultList();
     }
-
 }

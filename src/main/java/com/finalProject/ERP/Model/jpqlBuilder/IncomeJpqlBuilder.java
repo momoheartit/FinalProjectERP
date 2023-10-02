@@ -31,10 +31,10 @@ public class IncomeJpqlBuilder {
                             jpqlQuery.append(" <>");
                             break;
                         case "<":
-                            jpqlQuery.append(" <");
+                            jpqlQuery.append(" >");
                             break;
                         case ">":
-                            jpqlQuery.append(" >");
+                            jpqlQuery.append(" <");
                             break;
                         default:
                             throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
@@ -45,7 +45,7 @@ public class IncomeJpqlBuilder {
                         // Ha a feltétel dátum típusú, akkor helyettesítsd a helyét egy paraméterrel
                         jpqlQuery.append(" :").append(condition.getName());
                     } else {
-                        jpqlQuery.append(" ").append(condition.getValue());
+                        jpqlQuery.append(" :").append(condition.getName());
                     }
                 }
             }
