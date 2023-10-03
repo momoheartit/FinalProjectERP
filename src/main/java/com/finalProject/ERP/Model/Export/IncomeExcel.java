@@ -16,7 +16,6 @@ public class IncomeExcel {
         try (Workbook workbook = new XSSFWorkbook()) {
             Sheet sheet = workbook.createSheet("Income Data");
 
-            // Header sor létrehozása
             Row headerRow = sheet.createRow(0);
             String[] columns = {"ID", "Partner", "Amount", "Project", "Created", "Approved"};
 
@@ -25,7 +24,6 @@ public class IncomeExcel {
                 cell.setCellValue(columns[i]);
             }
 
-            // Adatok írása a táblázatba
             int rowNum = 1;
             for (IncomeEntity income : data) {
                 Row row = sheet.createRow(rowNum++);
@@ -40,7 +38,6 @@ public class IncomeExcel {
                 }
             }
 
-            // Fájl mentése
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
                 workbook.write(fileOut);
                 System.out.println("Excel fájl mentve: " + filePath);

@@ -18,7 +18,6 @@ public class IncomeForm extends InputForm {
     public IncomeForm(Pane parent, List<PartnerEntity> partners) {
         super(parent);
   
-        // Módosítások a mező típusain és a sor és oszlop pozícióin
         add("partner", new InputField("Partner"), 1, 0);
         add("amount", new InputField("Amount"), 2, 0);
         add("project", new InputField("Project"), 3, 0);
@@ -28,30 +27,17 @@ public class IncomeForm extends InputForm {
         this.partners = partners;
     }
     
-    // Új metódus az értékek beállításához
     public void setValues(IncomeEntity income) {
-        // Az értékek beállítása az adott IncomeEntity alapján
-
-//        int partnerIndex = 0;
-//        int partnerId = income.getPartner().getId();
-//        for (int i = 0; i < partners.size(); i++) {
-//            if (partners.get(i).getId() == partnerId) {
-//                partnerIndex = i;
-//                break;
-//            }
-//        }
         
         PartnerEntity partner = income.getPartner();
         if (partner != null) {
             setValue("partner", Integer.toString(partner.getId()));
         }
-        //setValue("partner", Integer.toString(partnerIndex));
         setValue("amount", Integer.toString(income.getAmount()));
         setValue("project", income.getProject());
         setValue("created", income.getCreated().toString());
         setValue("approved", income.getApproved() != null ? income.getApproved().toString() : null);
 
-        // Az instance változó beállítása
         instance = income;
     }
 
@@ -72,7 +58,6 @@ public class IncomeForm extends InputForm {
             if (form.getValue("approved") != null && !form.getValue("approved").isEmpty()) {
                 instance.setApproved(LocalDate.parse(form.getValue("approved")));
             } else {
-                // Ha az approved üres, akkor csak hagyjuk null-nak
                 instance.setApproved(null);
             }
 

@@ -18,18 +18,14 @@ public class IncomeTable extends Table<IncomeEntity> {
     public IncomeTable(Pane parent) {
         super(parent);
 
-        // VBox létrehozása
         VBox vbox = new VBox();
 
-        // Gomb hozzáadása a VBox-hoz
         Button exportButton = new Button("Export to Excel");
         exportButton.setOnAction(event -> exportToExcel());
         vbox.getChildren().add(exportButton);
 
-        // Táblázat hozzáadása a VBox-hoz
         vbox.getChildren().add(this);
 
-        // VBox hozzáadása a szülőhöz
         parent.getChildren().add(vbox);
 
         addColumn("ID", "id", 10);
@@ -54,16 +50,13 @@ public class IncomeTable extends Table<IncomeEntity> {
     private void exportToExcel() {
         List<IncomeEntity> data = getItems();
 
-        // Fájlkiválasztó dialógus inicializálása
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Mentés");
 
-        // A mentés helyének kiválasztása
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel fájlok (*.xlsx)", "*.xlsx"));
         File file = fileChooser.showSaveDialog(new Stage());
 
         if (file != null) {
-            // A kiválasztott helyen mentés
             String filePath = file.getAbsolutePath();
             IncomeExcel.exportToExcel(data, filePath);
         }

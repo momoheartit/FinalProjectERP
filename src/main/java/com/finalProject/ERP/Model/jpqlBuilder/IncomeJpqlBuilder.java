@@ -19,7 +19,6 @@ public class IncomeJpqlBuilder {
 
                 jpqlQuery.append(" i.").append(condition.getName());
 
-                // A project típusú érték esetén mindig LIKE típusú legyen a feltétel
                 if (condition.getName().equals("project")) {
                     jpqlQuery.append(" LIKE '%").append(condition.getValue()).append("%'");
                 } else {
@@ -40,9 +39,7 @@ public class IncomeJpqlBuilder {
                             throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
                     }
 
-                    // Ha a feltétel dátum típusú, akkor idézőjelek között kell lennie
                     if (condition.isDate()) {
-                        // Ha a feltétel dátum típusú, akkor helyettesítsd a helyét egy paraméterrel
                         jpqlQuery.append(" :").append(condition.getName());
                     } else {
                         jpqlQuery.append(" :").append(condition.getName());

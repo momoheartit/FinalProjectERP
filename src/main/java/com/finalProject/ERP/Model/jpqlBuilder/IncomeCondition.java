@@ -45,10 +45,6 @@ public class IncomeCondition {
     public boolean isValueEmpty() {
         return value == null || value.trim().isEmpty() || value.trim().equalsIgnoreCase("null");
     }
-//    
-//    public LocalDateTime getDateValue() {
-//        return dateValue;
-//    }
 
     public static List<IncomeCondition> createConditionsList(InputForm form) {
         List<IncomeCondition> conditionsList = new ArrayList<>();
