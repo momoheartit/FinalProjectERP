@@ -16,20 +16,27 @@ public class PartnerTable extends Table<PartnerEntity>{
     
     public PartnerTable(Pane parent) {
         super(parent);
+        
         VBox vbox = new VBox();
         VBox.setMargin(this, new Insets(0, 0,15, 0));
 
         Button exportButton = new Button("Export to Excel");
-        exportButton.setOnAction(event -> exportToExcel());
-        vbox.getChildren().add(exportButton);
 
         vbox.getChildren().add(this);
 
         parent.getChildren().add(vbox);
-
+        
         addColumn("ID", "id", 10);
         addColumn("Name", "name", 175);
         addColumn("Contact", "contact", 175);
+  
+        // Betűtípus és méret beállítása
+        String buttonFontStyle
+                = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 16;";
+        exportButton.setStyle(buttonFontStyle);
+
+        exportButton.setOnAction(event -> exportToExcel());
+        vbox.getChildren().add(exportButton);
 
         setPlaceholder("Nothing to see here");
     }

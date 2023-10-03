@@ -23,8 +23,6 @@ public class IncomeTable extends Table<IncomeEntity> {
         VBox.setMargin(this, new Insets(0, 0,15, 0));
 
         Button exportButton = new Button("Export to Excel");
-        exportButton.setOnAction(event -> exportToExcel());
-        vbox.getChildren().add(exportButton);
 
         vbox.getChildren().add(this);
 
@@ -36,6 +34,14 @@ public class IncomeTable extends Table<IncomeEntity> {
         addColumn("Project", "project", 175);
         addColumn("Created", "created", 100);
         addColumn("Approved", "approved", 100);
+                
+        // Betűtípus és méret beállítása
+        String buttonFontStyle
+                = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 25;";
+        exportButton.setStyle(buttonFontStyle);
+        
+        exportButton.setOnAction(event -> exportToExcel());
+        vbox.getChildren().add(exportButton);
 
         setPlaceholder("Nothing to see here");
     }
