@@ -14,6 +14,7 @@ public class Table<T> extends TableView<T> {
 
     public Table(Pane parent) {
         super();
+        this.setStyle("-fx-control-inner-background: #3e5c76; -fx-accent: #blue; -fx-border-color: black; -fx-border-width: 3;");
         parent.getChildren().add(this);
     }
 
@@ -21,6 +22,7 @@ public class Table<T> extends TableView<T> {
         TableColumn<T, String> column = new TableColumn<>(header);
         column.setCellValueFactory(new PropertyValueFactory<>(propertyName));
         column.setMinWidth(width);
+        column.setStyle("-fx-font-family: 'Britannic Bold'; -fx-font-size: 14;");
         getColumns().add(column);
     }
 
@@ -40,6 +42,7 @@ public class Table<T> extends TableView<T> {
                             setGraphic(null);
                         } else {
                             Button button = new Button(buttonText);
+                            button.setStyle("-fx-background-color: #3e5c76; -fx-text-fill: #white; -fx-border-width: 1; -fx-font-family: 'Britannic Bold'; -fx-font-size: 14; -fx-cursor: hand;");
                             button.setOnAction(evt
                                     -> {
                                 int index = getIndex();

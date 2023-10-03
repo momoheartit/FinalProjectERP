@@ -19,10 +19,38 @@
                   <Insets bottom="10.0" top="10.0" />
                </opaqueInsets>
                <children>
-                  <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Projects" />
-                  <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="New Project" />
-                  <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Partners" />
-                  <Button fx:id="newPartnerButton" mnemonicParsing="false" onAction="#newPartner" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="New Partner" />
+                  <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Projects">
+                     <graphic>
+                        <FontAwesomeIconView fill="#55828b" glyphName="FILTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic></Button>
+                  <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="New Project">
+                     <graphic>
+                        <FontAwesomeIconView fill="#55828b" glyphName="PLUS" size="14">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic></Button>
+                  <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Partners">
+                     <graphic>
+                        <FontAwesomeIconView fill="#55828b" glyphName="USERS">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic></Button>
+                  <Button fx:id="newPartnerButton" mnemonicParsing="false" onAction="#newPartner" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="New Partner">
+                     <graphic>
+                        <FontAwesomeIconView fill="#55828b" glyphName="USER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic></Button>
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
@@ -31,7 +59,8 @@
             <Label fx:id="dateTimeLabel" layoutY="704.0" prefHeight="30.0" prefWidth="225.0" styleClass="labelTime" stylesheets="@look.css" text="-">
                <padding>
                   <Insets left="15.0" />
-               </padding></Label>
+               </padding>
+            </Label>
             <FontAwesomeIconView fill="#3e5c76" glyphName="GLOBE" layoutX="43.0" layoutY="143.0" size="150" tabSize="0" textAlignment="CENTER" wrappingWidth="139.08567142486572">
                <effect>
                   <Glow />
@@ -56,5 +85,6 @@
             <Glow level="0.15" />
          </effect>
       </Label>
+      <FontAwesomeIconView />
    </children>
 </AnchorPane>

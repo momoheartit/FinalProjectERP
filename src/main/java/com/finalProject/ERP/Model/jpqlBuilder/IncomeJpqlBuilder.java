@@ -43,8 +43,6 @@ public class IncomeJpqlBuilder {
                         default:
                             throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
                     }
-
-
                         jpqlQuery.append(" :").append(condition.getName());
                     
                 }
