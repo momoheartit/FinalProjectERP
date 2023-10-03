@@ -52,7 +52,7 @@ public class InputDatePicker extends InputField {
 
         // Stílusok beállítása a DatePickerre
         String datePickerStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';" +
-                               "-fx-background-color: #b8c4cf; -fx-cursor: hand;";
+                               "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
         datePicker.getEditor().setStyle(datePickerStyle);
 
         // A focus beállítása a stílus módosításához

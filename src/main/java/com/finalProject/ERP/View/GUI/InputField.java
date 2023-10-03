@@ -82,7 +82,7 @@ public class InputField {
         //return new TextField();
         TextField textField = new TextField();
         String textFieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';" +
-                               "-fx-background-color: #b8c4cf; -fx-cursor: hand;";
+                               "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
         textField.setStyle(textFieldStyle);
         
         return textField;

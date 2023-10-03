@@ -26,7 +26,7 @@ public class IncomeJpqlBuilder {
                         case "=":
                             jpqlQuery.append(" =");
                             break;
-                        case "!=":
+                        case "≠":
                             jpqlQuery.append(" <>");
                             break;
                         case "<":

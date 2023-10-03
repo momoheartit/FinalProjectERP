@@ -46,7 +46,7 @@ public class InputForm extends GridPane {
             // Ha ComboBox, akkor hozzáadás két oszlopban
             add(field.getLabel(), col, row);
             add(field.getField(), col + 1, row);
-            setComboBoxOptions(key, new String[]{"=", "!=", "<", ">"});
+            //setComboBoxOptions(key, new String[]{"=", "!=", "<", ">"});
         } else if (field instanceof InputDatePicker) {
             // Ha DatePicker, akkor hozzáadás két oszlopban
             add(field.getLabel(), col, row);

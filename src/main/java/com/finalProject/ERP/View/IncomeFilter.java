@@ -20,32 +20,32 @@ public class IncomeFilter extends InputForm {
         super(parent);
         this.controller = controller;
         
-        add("idComboBox", new InputComboBox("ID"), 0, 0);
+        add("idComboBox", new InputComboBox("ID:", new String[]{"=", "≠", ">", "<"}), 0, 0);
         add("id", new InputField(null), 0, 1);
         
 
         // 2. sor
-        add("partnerComboBox", new InputComboBox("Partner:"), 1, 0);
+        add("partnerComboBox", new InputComboBox("Partner:", new String[]{"=", "≠", ">", "<"}), 1, 0);
         add("partner", new InputField(null), 1, 1);
         
 
         // 3. sor
-        add("amountComboBox", new InputComboBox("Amount:"), 2, 0);
+        add("amountComboBox", new InputComboBox("Amount:", new String[]{"=", "≠", ">", "<"}), 2, 0);
         add("amount", new InputField(null), 2, 1);
         
         
         // 4.sor
-        add("projectComboBox", new InputComboBox("Project:"), 3, 0);
+        add("projectComboBox", new InputComboBox("Project:", new String[]{"=", "≠"}), 3, 0);
         add("project", new InputField(null), 3, 1);
         
         
         // 4. sor
-        add("createdComboBox", new InputComboBox("Created:"), 4, 0);
+        add("createdComboBox", new InputComboBox("Created:", new String[]{"=", "≠", ">", "<"}), 4, 0);
         add("created", new InputDatePicker(null), 4, 1);
         
 
         // 5. sor
-        add("approvedComboBox", new InputComboBox("Approved:"), 5, 0);
+        add("approvedComboBox", new InputComboBox("Approved:", new String[]{"=", "≠", ">", "<"}), 5, 0);
         add("approved", new InputDatePicker(null), 5, 1);
         
         

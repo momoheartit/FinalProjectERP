@@ -24,7 +24,7 @@ public class PartnerJpqlBuilder {
                         case "=":
                             jpqlQuery.append(" =");
                             break;
-                        case "!=":
+                        case "≠":
                             jpqlQuery.append(" <>");
                             break;
                         case "<":
