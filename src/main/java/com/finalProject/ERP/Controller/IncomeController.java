@@ -29,7 +29,7 @@ public class IncomeController {
     }
 
     public void newIncome() {
-        parent.initView();
+        parent.initView("Create a new project");
         List<PartnerEntity> partners = model.getPartners();
 
         IncomeForm form = new IncomeForm(parent.getContainer(), partners);
@@ -42,7 +42,7 @@ public class IncomeController {
     }
 
     public void newFilter() {
-        parent.initView();
+        parent.initView("Search among projects");
         IncomeFilter incomeFilter = new IncomeFilter(parent.getContainer(), this, model);
     }
 
@@ -65,7 +65,7 @@ public class IncomeController {
     }
 
     public void showFiltered(List<IncomeCondition> filteredList) {
-        parent.initView();
+        parent.initView("Displaying projects and saving the results");
 
         jpqlQuery = incomeJpqlBuilder.buildQuery(filteredList);
 
@@ -90,7 +90,7 @@ public class IncomeController {
     }
 
     public void editIncome(IncomeEntity income) {
-        parent.initView();
+        parent.initView("Edit selected project");
 
         List<PartnerEntity> partners = model.getPartners();
         IncomeForm form = new IncomeForm(parent.getContainer(), partners);

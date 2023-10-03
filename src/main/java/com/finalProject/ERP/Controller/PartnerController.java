@@ -26,7 +26,7 @@ public class PartnerController {
     }
 
     public void newFilter() {
-        parent.initView();
+        parent.initView("Search among partners");
         PartnerFilter partnerFilter = new PartnerFilter(parent.getContainer(), this, model);
     }
 
@@ -49,7 +49,7 @@ public class PartnerController {
     }
 
     public void newPartner() {
-        parent.initView();
+        parent.initView("Create a new partner");
 
         PartnerForm form = new PartnerForm(parent.getContainer());
         form.saveButton("Create", part
@@ -60,7 +60,7 @@ public class PartnerController {
     }
 
     public void showFiltered(List<PartnerCondition> filteredList) {
-        parent.initView();
+        parent.initView("Displaying partners and saving the results");
 
         jpqlQuery = partnerJpqlBuilder.buildQuery(filteredList);
 
@@ -86,7 +86,7 @@ public class PartnerController {
     }
 
     public void editPartner(PartnerEntity partner) {
-        parent.initView();
+        parent.initView("Edit selected partner");
 
         PartnerForm form = new PartnerForm(parent.getContainer());
         form.setValues(partner);

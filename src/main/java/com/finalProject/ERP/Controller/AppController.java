@@ -21,6 +21,9 @@ public class AppController implements Initializable {
 
     @FXML
     private AnchorPane inputController;
+    
+    @FXML
+    private Label txtTitle;
 
     IncomeController incomeController;
     PartnerController partnerController;
@@ -72,7 +75,8 @@ public class AppController implements Initializable {
         return inputController;
     }
 
-    public void initView() {
+    public void initView(String title) {
+        txtTitle.setText(title);
         inputController.getChildren().clear();
     }
 }

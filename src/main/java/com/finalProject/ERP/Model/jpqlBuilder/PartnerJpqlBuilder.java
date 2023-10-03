@@ -28,10 +28,10 @@ public class PartnerJpqlBuilder {
                             jpqlQuery.append(" <>");
                             break;
                         case "<":
-                            jpqlQuery.append(" >");
+                            jpqlQuery.append(" <");
                             break;
                         case ">":
-                            jpqlQuery.append(" <");
+                            jpqlQuery.append(" >");
                             break;
                         default:
                             throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
