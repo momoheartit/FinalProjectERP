@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.finalProject.ERP.Model.Export;
 
 import com.finalProject.ERP.Model.PartnerEntity;
@@ -14,10 +10,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-/**
- *
- * @author forAndroid
- */
 public class PartnerExcel {
     public static void exportToExcel(List<PartnerEntity> data, String filePath) {
         try (Workbook workbook = new XSSFWorkbook()) {

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.finalProject.ERP.Model.jpqlBuilder;
 
 import com.finalProject.ERP.View.GUI.InputForm;
@@ -10,10 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author forAndroid
- */
 public class PartnerCondition {
     private String name;
     private String comboBoxValue;
@@ -66,19 +58,14 @@ public class PartnerCondition {
         conditionsList.add(new PartnerCondition("contact", form.getValue("contactComboBox"), form.getValue("contact"), false));
 
 
-        // Filtered list létrehozása
         List<PartnerCondition> filteredList = new ArrayList<>();
 
-        // Végigmegyünk az összes feltételes objektumon és hozzáadjuk a filteredList-hez, kivéve, ha a harmadik érték üres vagy null
         for (PartnerCondition condition : conditionsList) {
             if (!condition.isValueEmpty()) {
                 filteredList.add(condition);
-                System.out.println("Setting parameter: " + condition.getName() + " = " + condition.getValue());
             }
         }
         
-        System.out.println("filteredList tartalma: " + filteredList);
         return filteredList;
-        
     }
 }

@@ -68,7 +68,6 @@ public class IncomeForm extends InputForm {
                 instance.setApproved(null);
             }
 
-
             System.out.println("Eredmény: " + instance);
 
             onClick.accept(instance);

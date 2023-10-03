@@ -41,22 +41,17 @@ public class InputForm extends GridPane {
     public void add(String key, InputField field, int row, int col) {
         fields.put(key, field);
 
-        // Az InputField típusának ellenőrzése
+
         if (field instanceof InputComboBox) {
-            // Ha ComboBox, akkor hozzáadás két oszlopban
             add(field.getLabel(), col, row);
             add(field.getField(), col + 1, row);
-            //setComboBoxOptions(key, new String[]{"=", "!=", "<", ">"});
         } else if (field instanceof InputDatePicker) {
-            // Ha DatePicker, akkor hozzáadás két oszlopban
             add(field.getLabel(), col, row);
             add(field.getField(), col + 1, row);
         } else if (field instanceof InputCheckBox) {
-            // Ha CheckBox, akkor hozzáadás egy oszlopban, a Label középen
             add(field.getLabel(), col, row, 1, 1);
             add(field.getField(), col + 1, row);
         } else {
-            // Alapértelmezett eset: Label és mező egy oszlopban
             add(field.getLabel(), col, row);
             add(field.getField(), col + 1, row, 1, 1);
         }
@@ -65,7 +60,6 @@ public class InputForm extends GridPane {
     public void button(String buttonText, Consumer<InputForm> onClick, int row, int col) {
         Button button = new Button(buttonText);
 
-        // Betűtípus és méret beállítása
         String buttonFontStyle
                 = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; "
                 + "-fx-font-family: 'Britannic Bold'; -fx-font-size: 25; -fx-cursor: hand;";

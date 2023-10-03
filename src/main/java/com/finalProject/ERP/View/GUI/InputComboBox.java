@@ -5,10 +5,9 @@ import javafx.scene.control.Control;
 
 public class InputComboBox extends InputField {
 
-    public InputComboBox(String text, String[] options) { // COMBOBOXVÁLTOZTATÁs: , String[] options
+    public InputComboBox(String text, String[] options) {
         super(text);
-        setOptions(options);  // COMBOBOXVÁLTOZTATÁS
-        // COMBOBOXVÁLTOZTATÁSsetOptions(new String[]{"=", "!=", ">", "<"}); // Alapértelmezett értékek
+        setOptions(options);
     }
 
     public void setOptions(String[] options) {
@@ -21,7 +20,6 @@ public class InputComboBox extends InputField {
             items.add(option);
         }
 
-        // Ha van legalább egy opció, akkor állítsd be az alapértelmezett értéket
         if (!items.isEmpty()) {
             setValue(items.get(0));
         }
@@ -41,10 +39,8 @@ public class InputComboBox extends InputField {
 
     @Override
     protected Control createField() {
-       // return new ComboBox();
         ComboBox<String> comboBox = new ComboBox<>();
 
-        // ComboBox háttérszíne
         String comboBoxStyle = "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-font-size: "
                 + "16px; -fx-font-family: 'Britannic Bold'; -fx-border-color: #0d1321;";
         comboBox.setStyle(comboBoxStyle);

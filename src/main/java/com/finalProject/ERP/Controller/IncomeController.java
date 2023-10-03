@@ -95,12 +95,9 @@ public class IncomeController {
         List<PartnerEntity> partners = model.getPartners();
         IncomeForm form = new IncomeForm(parent.getContainer(), partners);
         form.setValues(income);
-        form.submit("Save", inc
-                -> {
-            // Mentsd el az adatbázisba az új bevételt
+        form.submit("Save", inc -> {
             model.save(inc);
 
-            // Hívd meg a showFiltered metódust a filteredList-del
             showFiltered(lastFilteredList);
         });
 

@@ -30,7 +30,6 @@ public class PartnerTable extends Table<PartnerEntity>{
         addColumn("Name", "name", 175);
         addColumn("Contact", "contact", 175);
   
-        // Betűtípus és méret beállítása
         String buttonFontStyle
                 = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 16;";
         exportButton.setStyle(buttonFontStyle);

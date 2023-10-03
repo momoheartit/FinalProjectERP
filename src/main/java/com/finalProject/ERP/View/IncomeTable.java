@@ -11,8 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class IncomeTable extends Table<IncomeEntity> {
 
@@ -35,7 +33,6 @@ public class IncomeTable extends Table<IncomeEntity> {
         addColumn("Created", "created", 100);
         addColumn("Approved", "approved", 100);
                 
-        // Betűtípus és méret beállítása
         String buttonFontStyle
                 = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 25;";
         exportButton.setStyle(buttonFontStyle);

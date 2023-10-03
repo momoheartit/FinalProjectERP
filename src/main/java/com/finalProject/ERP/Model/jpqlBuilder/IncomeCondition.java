@@ -72,10 +72,9 @@ public class IncomeCondition {
         if (approvedValue != null) {
             conditionsList.add(new IncomeCondition("approved", form.getValue("approvedComboBox"), approvedValue, true));
         }
-        // Filtered list létrehozása
+        
         List<IncomeCondition> filteredList = new ArrayList<>();
 
-        // Végigmegyünk az összes feltételes objektumon és hozzáadjuk a filteredList-hez, kivéve, ha a harmadik érték üres vagy null
         for (IncomeCondition condition : conditionsList) {
             if (!condition.isValueEmpty()) {
                 filteredList.add(condition);

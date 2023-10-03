@@ -1,7 +1,6 @@
 package com.finalProject.ERP.View.GUI;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
@@ -18,7 +17,7 @@ public class InputField {
     public InputField(String text) {
         label = new Label(text);
         field = createField();
-        
+
         String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
         label.setStyle(labelStyle);
     }
@@ -39,6 +38,7 @@ public class InputField {
         if (field instanceof TextInputControl) {
             return ((TextInputControl) field).getText();
         } else if (field instanceof DatePicker) {
+            System.out.println("GetValues életbe lép1");
             LocalDate date = ((DatePicker) field).getValue();
             System.out.println("GetValues életbe lép");
             return (date != null) ? date.toString() : null;
@@ -59,17 +59,17 @@ public class InputField {
         } else if (field instanceof DatePicker) {
             DatePicker datePicker = (DatePicker) field;
             System.out.println("Set Values életbe lép");
-            // Az érték beállítása csak akkor, ha a value nem null
-            if (value != null) {
+            if (value != null && !value.isEmpty()) {
                 datePicker.setValue(LocalDate.parse(value));
+            } else {
+                datePicker.setValue(null);
             }
         } else if (field instanceof CheckBox) {
             CheckBox checkBox = (CheckBox) field;
             checkBox.setSelected(Boolean.parseBoolean(value));
 
         } else {
-            // Egyéb esetek kezelése
-            // ...
+            //ezt meghagyom tarcsiba
         }
     }
 
@@ -79,12 +79,11 @@ public class InputField {
     }
 
     protected Control createField() {
-        //return new TextField();
         TextField textField = new TextField();
-        String textFieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';" +
-                               "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
+        String textFieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';"
+                + "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
         textField.setStyle(textFieldStyle);
-        
+
         return textField;
     }
 }

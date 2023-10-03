@@ -44,11 +44,7 @@ public class PartnerJpqlBuilder {
                             throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
                     }
 
-                    if (condition.isDate()) {
-                        jpqlQuery.append(" :").append(condition.getName());
-                    } else {
-                        jpqlQuery.append(" :").append(condition.getName());
-                    }
+                    jpqlQuery.append(" :").append(condition.getName());
                 }
             }
         }

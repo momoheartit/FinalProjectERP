@@ -1,8 +1,6 @@
 package com.finalProject.ERP.Model.jpqlBuilder;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import static org.springframework.jdbc.core.JdbcOperationsExtensionsKt.query;
 
 public class IncomeJpqlBuilder {
 
@@ -46,11 +44,9 @@ public class IncomeJpqlBuilder {
                             throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
                     }
 
-                    if (condition.isDate()) {
+
                         jpqlQuery.append(" :").append(condition.getName());
-                    } else {
-                        jpqlQuery.append(" :").append(condition.getName());
-                    }
+                    
                 }
             }
         }
