@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -13,30 +12,37 @@
 <AnchorPane id="AnchorPane" fx:id="appContainer" prefHeight="750.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalProject.ERP.Controller.AppController">
 
    <children>
-      <AnchorPane fx:id="controllerContainer" prefHeight="750.0" prefWidth="225.0" style="-fx-background-color: #89ABE3;">
+      <AnchorPane fx:id="controllerContainer" prefHeight="750.0" prefWidth="225.0" styleClass="linear-grad-to-bottom" stylesheets="@look.css">
          <children>
             <VBox fx:id="buttonContainer" alignment="TOP_CENTER" layoutY="174.0" prefHeight="530.0" prefWidth="226.0" spacing="10.0">
                <opaqueInsets>
                   <Insets bottom="10.0" top="10.0" />
                </opaqueInsets>
                <children>
-                  <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" text="Projects" />
-                  <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" text="New Project" />
-                  <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" text="Partners" />
-                  <Button fx:id="newPartnerButton" mnemonicParsing="false" onAction="#newPartner" prefHeight="40.0" prefWidth="225.0" text="New Partner" />
+                  <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Projects" />
+                  <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="New Project" />
+                  <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Partners" />
+                  <Button fx:id="newPartnerButton" mnemonicParsing="false" onAction="#newPartner" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="New Partner" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </VBox>
-            <Label fx:id="dateTimeLabel" layoutY="704.0" prefHeight="30.0" prefWidth="225.0" text="-">
+            <Label fx:id="dateTimeLabel" layoutY="704.0" prefHeight="30.0" prefWidth="225.0" styleClass="labelTime" stylesheets="@look.css" text="-">
                <padding>
                   <Insets left="15.0" />
                </padding></Label>
+            <FontAwesomeIconView fill="#3e5c76" glyphName="GLOBE" layoutX="43.0" layoutY="143.0" size="150" tabSize="0" textAlignment="CENTER" wrappingWidth="139.08567142486572">
+               <effect>
+                  <Glow />
+               </effect></FontAwesomeIconView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="inputController" layoutX="225.0" layoutY="108.0" prefHeight="642.0" prefWidth="775.0" />
-      <Label fx:id="txtTitle" layoutX="225.0" prefHeight="111.0" prefWidth="775.0" text="Enterprise Resource Planning 2023.">
+      <AnchorPane fx:id="inputController" layoutX="218.0" layoutY="111.0" prefHeight="642.0" prefWidth="775.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding></AnchorPane>
+      <Label fx:id="txtTitle" layoutX="225.0" prefHeight="111.0" prefWidth="775.0" styleClass="labelTitle" stylesheets="@look.css" text="Enterprise Resource Planning 2023." textFill="#3e5c76">
          <opaqueInsets>
             <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
          </opaqueInsets>
@@ -47,15 +53,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <effect>
-            <Bloom threshold="0.17">
-               <input>
-                  <Lighting bumpInput="$null">
-                     <light>
-                        <Light.Distant />
-                     </light>
-                  </Lighting>
-               </input>
-            </Bloom>
+            <Glow level="0.15" />
          </effect>
       </Label>
    </children>

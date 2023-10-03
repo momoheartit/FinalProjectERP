@@ -5,6 +5,7 @@ import com.finalProject.ERP.Model.IncomeEntity;
 import com.finalProject.ERP.View.GUI.Table;
 import java.io.File;
 import java.util.List;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -19,6 +20,7 @@ public class IncomeTable extends Table<IncomeEntity> {
         super(parent);
 
         VBox vbox = new VBox();
+        VBox.setMargin(this, new Insets(0, 0,15, 0));
 
         Button exportButton = new Button("Export to Excel");
         exportButton.setOnAction(event -> exportToExcel());

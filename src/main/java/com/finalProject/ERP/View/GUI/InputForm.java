@@ -17,7 +17,7 @@ public class InputForm extends GridPane {
         parent.getChildren().add(this);
         setHgap(10);
         setVgap(10);
-        setPadding(new Insets(10, 10, 10, 10));
+        setPadding(new Insets(20, 20, 20, 20));
     }
 
     public HashMap<String, String> getFilledValues() {

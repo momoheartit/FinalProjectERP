@@ -1,0 +1,37 @@
+
+.linear-grad-to-bottom{
+    -fx-background-color: linear-gradient(to bottom, #0d1321, #1d2d44);
+}
+
+.button-style {
+    -fx-background-color: transparent;
+    -fx-text-fill: #3e5c76;
+    -fx-border-color: #55828b;
+    -fx-border-width: 2;
+    -fx-font-family: 'Britannic Bold';
+    -fx-font-size: 16;
+}
+
+.button-style:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #124559;
+    -fx-text-fill: white;
+    -fx-font-family: 'Britannic Bold';
+    -fx-font-size: 18;
+}
+
+.labelTitle{
+    -fx-background-color: #0d1321;
+    -fx-text-fill: #3e5c76;
+    -fx-font-family: 'Britannic Bold';
+    -fx-font-size: 30;
+}
+
+.labelTime{
+    -fx-background-color: transparent;
+    -fx-text-fill: #3e5c76;
+    -fx-font-family: 'Britannic Bold';
+    -fx-font-size: 12;
+}
+
+
