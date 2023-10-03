@@ -48,6 +48,17 @@ public class PartnerController {
         }
     }
 
+    public void newPartner() {
+        parent.initView();
+
+        PartnerForm form = new PartnerForm(parent.getContainer());
+        form.saveButton("Create", part
+                -> {
+            model.save(part);
+            form.clear();
+        });
+    }
+
     public void showFiltered(List<PartnerCondition> filteredList) {
         parent.initView();
 

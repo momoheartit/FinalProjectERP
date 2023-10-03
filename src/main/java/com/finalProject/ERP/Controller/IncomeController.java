@@ -34,7 +34,7 @@ public class IncomeController {
 
         IncomeForm form = new IncomeForm(parent.getContainer(), partners);
 
-        form.submit("Save", inc -> {
+        form.submit("Create", inc -> {
             model.save(inc);
             form.clear();
             

@@ -19,6 +19,7 @@
                   <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" text="Projects" />
                   <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" text="New Project" />
                   <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" text="Partners" />
+                  <Button fx:id="newPartnerButton" mnemonicParsing="false" onAction="#newPartner" prefHeight="40.0" prefWidth="225.0" text="New Partner" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />

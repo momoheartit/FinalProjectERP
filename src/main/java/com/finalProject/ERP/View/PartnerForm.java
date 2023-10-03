@@ -13,8 +13,8 @@ public class PartnerForm extends InputForm {
     public PartnerForm(Pane parent) {
         super(parent);
         
-        add("name", new InputField("Projekt neve"),1,0);
-        add("contact", new InputField("Kapcsolattartó"),2,0);
+        add("name", new InputField("Name: "),1,0);
+        add("contact", new InputField("Contact: "),2,0);
         
 
         instance = null;

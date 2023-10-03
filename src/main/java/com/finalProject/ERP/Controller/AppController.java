@@ -16,29 +16,33 @@ import javafx.scene.layout.AnchorPane;
 
 public class AppController implements Initializable {
 
-
     @FXML
     private Label dateTimeLabel;
 
     @FXML
     private AnchorPane inputController;
-    
+
     IncomeController incomeController;
     PartnerController partnerController;
-    
+
     @FXML
-    void loadIncomeFilter(){
+    void loadIncomeFilter() {
         incomeController.newFilter();
     }
-    
+
     @FXML
-    public void newIncome(){
+    public void newIncome() {
         incomeController.newIncome();
     }
-    
+
     @FXML
-    void loadPartnerFilter(){
+    void loadPartnerFilter() {
         partnerController.newFilter();
+    }
+
+    @FXML
+    public void newPartner() {
+        partnerController.newPartner();
     }
 
     private void updateDateTimeLabel() {
@@ -53,7 +57,7 @@ public class AppController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         incomeController = new IncomeController(this);
         partnerController = new PartnerController(this);
-        
+
         Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.seconds(10), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -63,12 +67,12 @@ public class AppController implements Initializable {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
-    
+
     public AnchorPane getContainer() {
         return inputController;
     }
-    
-       public void initView() {
+
+    public void initView() {
         inputController.getChildren().clear();
     }
 }
