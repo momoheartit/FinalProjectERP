@@ -20,10 +20,10 @@ public class PartnerFilter extends InputForm {
         add("idComboBox", new InputComboBox("ID:", new String[]{"=", "≠", ">", "<"}), 0, 0);
         add("id", new InputField(null), 0, 1);
 
-        add("nameComboBox", new InputComboBox("Name:", new String[]{"=", "≠"}), 1, 0);
+        add("nameComboBox", new InputComboBox("Name contains:", new String[]{"=", "≠"}), 1, 0);
         add("name", new InputField(null), 1, 1);
 
-        add("contactComboBox", new InputComboBox("Contact:", new String[]{"=", "≠"}), 2, 0);
+        add("contactComboBox", new InputComboBox("Contact contains:", new String[]{"=", "≠"}), 2, 0);
         add("contact", new InputField(null), 2, 1);
 
         button("Search", event -> searchButton(), 3, 0);

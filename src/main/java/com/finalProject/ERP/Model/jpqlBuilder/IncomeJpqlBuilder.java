@@ -21,7 +21,13 @@ public class IncomeJpqlBuilder {
                 jpqlQuery.append(" i.").append(condition.getName());
 
                 if (condition.getName().equals("project")) {
-                    jpqlQuery.append(" LIKE CONCAT('%', :").append(condition.getName()).append(",'%')");
+                    if ("=".equals(condition.getComboBoxValue())) {
+                        jpqlQuery.append(" LIKE CONCAT('%', :").append(condition.getName()).append(",'%')");
+                    } else if ("≠".equals(condition.getComboBoxValue())) {
+                        jpqlQuery.append(" NOT LIKE CONCAT('%', :").append(condition.getName()).append(",'%')");
+                    } else {
+                        throw new IllegalArgumentException("Invalid operator: " + condition.getComboBoxValue());
+                    }
                 } else {
                     switch (condition.getComboBoxValue()) {
                         case "=":

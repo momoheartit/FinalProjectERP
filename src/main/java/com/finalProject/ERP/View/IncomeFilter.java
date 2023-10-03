@@ -25,7 +25,7 @@ public class IncomeFilter extends InputForm {
         
 
         // 2. sor
-        add("partnerComboBox", new InputComboBox("Partner:", new String[]{"=", "≠", ">", "<"}), 1, 0);
+        add("partnerComboBox", new InputComboBox("Partner's ID:", new String[]{"=", "≠", ">", "<"}), 1, 0);
         add("partner", new InputField(null), 1, 1);
         
 
@@ -35,7 +35,7 @@ public class IncomeFilter extends InputForm {
         
         
         // 4.sor
-        add("projectComboBox", new InputComboBox("Project:", new String[]{"=", "≠"}), 3, 0);
+        add("projectComboBox", new InputComboBox("Project's name:", new String[]{"=", "≠"}), 3, 0);
         add("project", new InputField(null), 3, 1);
         
         
