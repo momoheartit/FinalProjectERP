@@ -37,9 +37,9 @@ public class PartnerController {
 
         if (jpqlQuery != null) {
             System.out.println("JPQL lekérdezés: " + jpqlQuery);
-            List<PartnerEntity> filteredIncome = model.getFilteredPartner(jpqlQuery, filteredList);
+            List<PartnerEntity> filteredPartner = model.getFilteredPartner(jpqlQuery, filteredList);
             System.out.println("Szűrt eredmények:");
-            for (PartnerEntity partner : filteredIncome) {
+            for (PartnerEntity partner : filteredPartner) {
                 System.out.println(partner);
             }
             showFiltered(filteredList);

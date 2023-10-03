@@ -3,7 +3,8 @@ package com.finalProject.ERP.Model.jpqlBuilder;
 import java.util.List;
 
 public class PartnerJpqlBuilder {
-       public String buildQuery(List<PartnerCondition> conditions) {
+
+    public String buildQuery(List<PartnerCondition> conditions) {
         StringBuilder jpqlQuery = new StringBuilder("SELECT i FROM PartnerEntity i");
 
         if (conditions != null && !conditions.isEmpty()) {
@@ -17,8 +18,10 @@ public class PartnerJpqlBuilder {
 
                 jpqlQuery.append(" i.").append(condition.getName());
 
+//                if (condition.getName().equals("name") || condition.getName().equals("contact")) {
+//                    jpqlQuery.append(" LIKE '%").append(condition.getValue()).append("%'");
                 if (condition.getName().equals("name") || condition.getName().equals("contact")) {
-                    jpqlQuery.append(" LIKE '%").append(condition.getValue()).append("%'");
+                    jpqlQuery.append(" LIKE CONCAT('%', :").append(condition.getName()).append(",'%')");
                 } else {
                     switch (condition.getComboBoxValue()) {
                         case "=":

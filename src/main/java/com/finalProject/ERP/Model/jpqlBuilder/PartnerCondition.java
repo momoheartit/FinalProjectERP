@@ -73,6 +73,7 @@ public class PartnerCondition {
         for (PartnerCondition condition : conditionsList) {
             if (!condition.isValueEmpty()) {
                 filteredList.add(condition);
+                System.out.println("Setting parameter: " + condition.getName() + " = " + condition.getValue());
             }
         }
         

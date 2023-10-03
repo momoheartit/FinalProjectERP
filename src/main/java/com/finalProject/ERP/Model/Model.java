@@ -51,8 +51,6 @@ public class Model {
         incomeEntityRepository.delete(income);
     }
 
-    
-
     public List<IncomeEntity> getFilteredIncome(String jpqlQuery, List<IncomeCondition> conditions) {
         Query query = entityManager.createQuery(jpqlQuery, IncomeEntity.class);
 
@@ -68,7 +66,7 @@ public class Model {
     }
 
     public List<PartnerEntity> getFilteredPartner(String jpqlQuery, List<PartnerCondition> conditions) {
-        Query query = entityManager.createQuery(jpqlQuery, IncomeEntity.class);
+        Query query = entityManager.createQuery(jpqlQuery, PartnerEntity.class);
 
         for (PartnerCondition condition : conditions) {
             if (condition.isDate()) {

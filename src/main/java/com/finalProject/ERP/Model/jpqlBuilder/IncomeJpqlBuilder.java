@@ -2,6 +2,7 @@ package com.finalProject.ERP.Model.jpqlBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import static org.springframework.jdbc.core.JdbcOperationsExtensionsKt.query;
 
 public class IncomeJpqlBuilder {
 
@@ -20,7 +21,7 @@ public class IncomeJpqlBuilder {
                 jpqlQuery.append(" i.").append(condition.getName());
 
                 if (condition.getName().equals("project")) {
-                    jpqlQuery.append(" LIKE '%").append(condition.getValue()).append("%'");
+                    jpqlQuery.append(" LIKE CONCAT('%', :").append(condition.getName()).append(",'%')");
                 } else {
                     switch (condition.getComboBoxValue()) {
                         case "=":
