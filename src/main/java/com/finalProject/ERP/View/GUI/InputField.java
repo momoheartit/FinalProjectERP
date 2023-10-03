@@ -18,6 +18,9 @@ public class InputField {
     public InputField(String text) {
         label = new Label(text);
         field = createField();
+        
+        String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
+        label.setStyle(labelStyle);
     }
 
     public Label getLabel() {
@@ -76,6 +79,12 @@ public class InputField {
     }
 
     protected Control createField() {
-        return new TextField();
+        //return new TextField();
+        TextField textField = new TextField();
+        String textFieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';" +
+                               "-fx-background-color: #b8c4cf; -fx-cursor: hand;";
+        textField.setStyle(textFieldStyle);
+        
+        return textField;
     }
 }

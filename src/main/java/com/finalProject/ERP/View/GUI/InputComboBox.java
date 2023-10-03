@@ -45,6 +45,18 @@ public class InputComboBox extends InputField {
 
     @Override
     protected Control createField() {
-        return new ComboBox();
+       // return new ComboBox();
+        ComboBox<String> comboBox = new ComboBox<>();
+
+        // ComboBox háttérszíne
+        String comboBoxStyle = "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
+        comboBox.setStyle(comboBoxStyle);
+
+//        // ComboBox betűtípusa és mérete
+//        String comboBoxFontStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
+//        comboBox.getEditor().setStyle(comboBoxFontStyle);
+
+        return comboBox;
     }
+    
 }

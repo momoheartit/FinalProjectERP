@@ -47,7 +47,24 @@ public class InputDatePicker extends InputField {
 
     @Override
     protected Control createField() {
-        return new DatePicker();
+        //return new DatePicker();
+                DatePicker datePicker = new DatePicker();
+
+        // Stílusok beállítása a DatePickerre
+        String datePickerStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';" +
+                               "-fx-background-color: #b8c4cf; -fx-cursor: hand;";
+        datePicker.getEditor().setStyle(datePickerStyle);
+
+        // A focus beállítása a stílus módosításához
+        datePicker.getEditor().focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+            if (isNowFocused) {
+                datePicker.getEditor().getStyleClass().add("date-picker-inner-focused");
+            } else {
+                datePicker.getEditor().getStyleClass().remove("date-picker-inner-focused");
+            }
+        });
+
+        return datePicker;
     }
     
 }

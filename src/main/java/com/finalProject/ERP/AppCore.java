@@ -12,6 +12,7 @@ public class AppCore extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("app.fxml"));
+        
 
         Scene scene = new Scene(loader.load(),1000,750);
         stage.setScene(scene);

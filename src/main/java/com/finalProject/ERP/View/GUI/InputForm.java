@@ -64,6 +64,12 @@ public class InputForm extends GridPane {
 
     public void button(String buttonText, Consumer<InputForm> onClick, int row, int col) {
         Button button = new Button(buttonText);
+
+        // Betűtípus és méret beállítása
+        String buttonFontStyle
+                = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 25;";
+        button.setStyle(buttonFontStyle);
+
         add(button, col, row, 2, 1);
 
         button.setOnAction(evt -> {
