@@ -1,6 +1,7 @@
 package com.finalProject.ERP.View.GUI;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
@@ -36,6 +37,7 @@ public class InputField {
             return ((TextInputControl) field).getText();
         } else if (field instanceof DatePicker) {
             LocalDate date = ((DatePicker) field).getValue();
+            System.out.println("GetValues életbe lép");
             return (date != null) ? date.toString() : null;
         } else if (field instanceof CheckBox) {
             return String.valueOf(((CheckBox) field).isSelected());
@@ -47,16 +49,13 @@ public class InputField {
         return null;
     }
 
-//    public void setValue(String value) {
-//        TextInputControl control = (TextInputControl) field;
-//        control.setText(value);
-//    }
     public void setValue(String value) {
         if (field instanceof TextInputControl) {
             TextInputControl textInputControl = (TextInputControl) field;
             textInputControl.setText(value);
         } else if (field instanceof DatePicker) {
             DatePicker datePicker = (DatePicker) field;
+            System.out.println("Set Values életbe lép");
             // Az érték beállítása csak akkor, ha a value nem null
             if (value != null) {
                 datePicker.setValue(LocalDate.parse(value));

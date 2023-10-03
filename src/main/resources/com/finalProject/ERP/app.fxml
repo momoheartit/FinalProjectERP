@@ -16,8 +16,9 @@
                   <Insets bottom="10.0" top="10.0" />
                </opaqueInsets>
                <children>
-                  <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" text="Incomes" />
-                  <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" text="New Income" />
+                  <Button fx:id="incomesButton" mnemonicParsing="false" onAction="#loadIncomeFilter" prefHeight="40.0" prefWidth="225.0" text="Projects" />
+                  <Button fx:id="newIncomeButton" mnemonicParsing="false" onAction="#newIncome" prefHeight="40.0" prefWidth="225.0" text="New Project" />
+                  <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" text="Partners" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />

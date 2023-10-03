@@ -20,6 +20,7 @@ public class IncomeController {
     private IncomeJpqlBuilder incomeJpqlBuilder;
     private String jpqlQuery;  // JPQL lekérdezés tárolásához
     private List<IncomeCondition> lastFilteredList;
+    
 
     public IncomeController(AppController parent) {
         this.parent = parent;
@@ -29,7 +30,6 @@ public class IncomeController {
 
     public void newIncome() {
         parent.initView();
-
         List<PartnerEntity> partners = model.getPartners();
 
         IncomeForm form = new IncomeForm(parent.getContainer(), partners);
@@ -37,6 +37,7 @@ public class IncomeController {
         form.submit("Save", inc -> {
             model.save(inc);
             form.clear();
+            
         });
     }
 
@@ -45,7 +46,7 @@ public class IncomeController {
         IncomeFilter incomeFilter = new IncomeFilter(parent.getContainer(), this, model);
     }
 
-    public void handleSearchButtonClick(InputForm form) {
+    public void searchButtonClick(InputForm form) {
         List<IncomeCondition> filteredList = IncomeCondition.createConditionsList(form);
 
         jpqlQuery = incomeJpqlBuilder.buildQuery(filteredList);
@@ -78,6 +79,11 @@ public class IncomeController {
             table.addActionColumn("...", (incomeEntity, index) -> {
                 editIncome(incomeEntity);
             });
+            table.addActionColumn("X", (incomeEntity, index)
+                    -> {
+                model.delete(incomeEntity);
+                showFiltered(lastFilteredList);
+            });
         } else {
             System.out.println("A JPQL lekérdezés null.");
         }
@@ -96,8 +102,8 @@ public class IncomeController {
 
             // Hívd meg a showFiltered metódust a filteredList-del
             showFiltered(lastFilteredList);
-
         });
+
     }
 
     public Model getModel() {

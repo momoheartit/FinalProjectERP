@@ -11,5 +11,6 @@ public interface PartnerEntityRepository extends CrudRepository<IncomeEntity, In
     
     @Query("SELECT p FROM PartnerEntity p ORDER BY p.id")
     List<PartnerEntity> findAllByOrderById();
+    
    
 }

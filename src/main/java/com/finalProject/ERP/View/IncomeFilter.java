@@ -43,11 +43,11 @@ public class IncomeFilter extends InputForm {
         add("approved", new InputDatePicker("Approved"), 5, 0);
         add("approvedComboBox", new InputComboBox(null), 5, 1);
 
-        button("Search", event -> handleSearchButtonClick(), 6, 0);
+        button("Search", event -> searchButton(), 6, 0);
 
     }
 
-    public void handleSearchButtonClick() {
-        controller.handleSearchButtonClick(this);
+    public void searchButton() {
+        controller.searchButtonClick(this);
     }
 }

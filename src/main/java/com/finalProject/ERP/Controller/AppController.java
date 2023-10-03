@@ -24,6 +24,7 @@ public class AppController implements Initializable {
     private AnchorPane inputController;
     
     IncomeController incomeController;
+    PartnerController partnerController;
     
     @FXML
     void loadIncomeFilter(){
@@ -33,6 +34,11 @@ public class AppController implements Initializable {
     @FXML
     public void newIncome(){
         incomeController.newIncome();
+    }
+    
+    @FXML
+    void loadPartnerFilter(){
+        partnerController.newFilter();
     }
 
     private void updateDateTimeLabel() {
@@ -46,6 +52,7 @@ public class AppController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         incomeController = new IncomeController(this);
+        partnerController = new PartnerController(this);
         
         Timeline timeline = new Timeline(new KeyFrame(javafx.util.Duration.seconds(10), new EventHandler<ActionEvent>() {
             @Override

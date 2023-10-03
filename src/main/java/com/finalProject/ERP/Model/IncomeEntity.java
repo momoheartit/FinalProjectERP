@@ -51,6 +51,7 @@ public class IncomeEntity {
     }
 
     public String getProject() {
+        if (project == null) {return "-";}
         return project;
     }
 
@@ -97,7 +98,5 @@ public class IncomeEntity {
                 ", approved=" + approved + '}';
     }
 
-    
-    
     
 }
