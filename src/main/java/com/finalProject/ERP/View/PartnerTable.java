@@ -27,8 +27,8 @@ public class PartnerTable extends Table<PartnerEntity>{
         parent.getChildren().add(vbox);
         
         addColumn("ID", "id", 10);
-        addColumn("Name", "name", 175);
-        addColumn("Contact", "contact", 175);
+        addColumn("Name", "name", 225);
+        addColumn("Contact", "contact", 255);
   
         String buttonFontStyle
                 = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 16;";

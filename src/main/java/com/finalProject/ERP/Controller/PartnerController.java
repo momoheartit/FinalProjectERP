@@ -74,12 +74,6 @@ public class PartnerController {
             table.addActionColumn("✔", (partnerEntity, index) -> {
                 editPartner(partnerEntity);
             });
-//            table.addActionColumn("X", (partnerEntity, index)
-//                    -> {
-//                //Itt kellene törölni, most ez egy sout//model.delete(partnerEntity);
-//                System.out.println("Most kellene törölni........");
-//                showFiltered(lastFilteredList);
-//            });
         } else {
             System.out.println("A JPQL lekérdezés null.");
         }

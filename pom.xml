@@ -70,8 +70,12 @@
             <artifactId>jfilechooser-bookmarks</artifactId>
             <version>0.1.0</version>
         </dependency>
-
-
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>22-ea+11</version>
+        </dependency>
 
     </dependencies>
 

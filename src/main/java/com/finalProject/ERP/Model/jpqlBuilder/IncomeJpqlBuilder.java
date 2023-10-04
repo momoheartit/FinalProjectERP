@@ -48,7 +48,7 @@ public class IncomeJpqlBuilder {
                 }
             }
         }
-        jpqlQuery.append(" ORDER BY i.created DESC");
+        jpqlQuery.append(" ORDER BY i.id DESC");
 
         return jpqlQuery.toString();
     }
