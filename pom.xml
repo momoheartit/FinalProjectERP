@@ -15,10 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>20</java.version>
-        
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        
     </properties>
     <dependencies>
         <dependency>
@@ -80,6 +76,13 @@
             <artifactId>javafx-swing</artifactId>
             <version>22-ea+11</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+        </dependency>
+
 
     </dependencies>
 
