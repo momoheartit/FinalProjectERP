@@ -53,7 +53,7 @@ public class IncomeCondition {
         conditionsList.add(new IncomeCondition("id", form.getValue("idComboBox"), form.getValue("id"), false));
 
         // Partner
-        conditionsList.add(new IncomeCondition("partner.id", form.getValue("partnerComboBox"), form.getValue("partner"), false));
+        conditionsList.add(new IncomeCondition("partnerId", form.getValue("partnerComboBox"), form.getValue("partnerId"), false));
 
         // Amount
         conditionsList.add(new IncomeCondition("amount", form.getValue("amountComboBox"), form.getValue("amount"), false));
