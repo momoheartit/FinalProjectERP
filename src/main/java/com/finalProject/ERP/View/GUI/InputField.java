@@ -110,7 +110,7 @@ public class InputField {
 
         // Csak betűk engedélyezése
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("^[a-zA-Z]*$")) {
+            if (!newValue.matches("^[a-zA-Z.@]*$")) {
                 textField.setText(oldValue);
             }
         });
