@@ -10,8 +10,11 @@ public class PartnerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    
+    @Column(nullable = false)
     private String name;
+    
+    @Column(nullable = false)
     private String contact;
 
     // Getterek és setterek

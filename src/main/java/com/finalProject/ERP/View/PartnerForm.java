@@ -12,10 +12,9 @@ public class PartnerForm extends InputForm {
 
     public PartnerForm(Pane parent) {
         super(parent);
-        
-        add("name", new InputField("Name: ", InputField.FieldType.LETTER),1,0);
-        add("contact", new InputField("Contact: ", InputField.FieldType.LETTER),2,0);
-        
+
+        add("name", new InputField("Name: ", InputField.FieldType.LETTER), 1, 0);
+        add("contact", new InputField("Contact: ", InputField.FieldType.LETTER), 2, 0);
 
         instance = null;
     }
@@ -33,12 +32,26 @@ public class PartnerForm extends InputForm {
             if (instance == null) {
                 instance = new PartnerEntity();
             }
-            
-            instance.setName(part.getValue("name"));
-            instance.setContact(part.getValue("contact"));
+        String name = part.getValue("name").trim();
+        String contact = part.getValue("contact").trim();
 
-            onClick.accept(instance);
-            instance = null;
-        },3,0);
+        if (name.isEmpty() || contact.isEmpty()) {
+            // Hiba esetén hibaüzenet megjelenítése
+            ErrorDialog.showError("Mandatory fields:\n"
+                    + "- Partner's name\n"
+                    + "- Contact");
+        } else {
+            try {
+                instance.setName(name);
+                instance.setContact(contact);
+
+                onClick.accept(instance);
+                instance = null;
+            } catch (Exception e) {
+                // Hiba esetén hibaüzenet megjelenítése
+                ErrorDialog.showError("Unexpected error occurred.");
+            }
+        }
+        }, 3, 0);
     }
 }

@@ -35,7 +35,7 @@ public class IncomeForm extends InputForm {
         }
         setValue("amount", Integer.toString(income.getAmount()));
         setValue("project", income.getProject());
-        setValue("created", income.getCreated().toString());
+        setValue("created", income.getCreated() != null ? income.getApproved().toString() : null);
         setValue("approved", income.getApproved() != null ? income.getApproved().toString() : null);
 
         instance = income;
@@ -46,32 +46,39 @@ public class IncomeForm extends InputForm {
             if (instance == null) {
                 instance = new IncomeEntity();
             }
+            try {
+                int partnerX = Integer.parseInt(form.getValue("partner")) - 1;
+                PartnerEntity partner = partners.get(partnerX);
+                instance.setPartner(partner);
 
-            int partnerX = Integer.parseInt(form.getValue("partner")) - 1;
-            PartnerEntity partner = partners.get(partnerX);
-            instance.setPartner(partner);
+                instance.setAmount(Integer.parseInt(form.getValue("amount")));
+                instance.setProject(form.getValue("project"));
 
-            instance.setAmount(Integer.parseInt(form.getValue("amount")));
-            instance.setProject(form.getValue("project"));
+                String createdText = form.getValue("created");
+                if (createdText != null && !createdText.isEmpty()) {
+                    instance.setCreated(LocalDate.parse(createdText));
+                } else {
+                    instance.setCreated(null);
+                }
 
-            String createdText = form.getValue("created");
-            if (createdText != null && !createdText.isEmpty()) {
-                instance.setCreated(LocalDate.parse(createdText));
-            } else {
-                System.out.println("A 'Created' mező értéke üres vagy null.");
+                String approvedText = form.getValue("approved");
+                if (approvedText != null && !approvedText.isEmpty()) {
+                    instance.setApproved(LocalDate.parse(approvedText));
+                } else {
+                    instance.setApproved(null);
+                }
+
+                System.out.println("Eredmény: " + instance);
+
+                onClick.accept(instance);
+                instance = null;
+            } catch (Exception e) {
+                // Hiba esetén hibaüzenet megjelenítése
+                ErrorDialog.showError("Mandatory fields:\n"
+                        + "- The partner's ID\n"
+                        + "- Amount\n"
+                        + "- Name of the project");
             }
-            
-            String approvedText = form.getValue("approved");
-            if (approvedText != null && !approvedText.isEmpty()) {
-                instance.setApproved(LocalDate.parse(approvedText));
-            } else {
-                instance.setApproved(null);
-            }
-
-            System.out.println("Eredmény: " + instance);
-
-            onClick.accept(instance);
-            instance = null;
         }, 6, 0);
 
     }

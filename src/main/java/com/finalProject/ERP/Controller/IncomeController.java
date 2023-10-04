@@ -38,7 +38,6 @@ public class IncomeController {
         form.submit("Create", inc -> {
             model.save(inc);
             form.clear();
-
         });
     }
 
@@ -146,12 +145,21 @@ public class IncomeController {
         System.out.println("hát ez még nagyon kezdetleges te....");
     }
 
-    public void showErrorMessageBox(String message) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Hiba");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+//    public void showErrorMessageBox(String message) {
+//        Alert alert = new Alert(AlertType.ERROR);
+//        alert.setTitle("Hiba");
+//        alert.setHeaderText(null);
+//        alert.setContentText(message);
+//        alert.showAndWait();
+//    }
+    
+    /////////////////////////A tesztek futtatásához:
+    public void setModel(Model model){
+        this.model = model;
+    }
+    
+    public List<IncomeEntity> getFilteredIncome(String jpqlQuery, List<IncomeCondition> conditions) {
+        return model.getFilteredIncome(jpqlQuery, conditions);
     }
 
 }
