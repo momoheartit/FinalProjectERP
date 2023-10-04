@@ -82,6 +82,10 @@ public class IncomeChart extends InputForm {
             } else if (month == LocalDate.now().minusMonths(3).getMonthValue()) {
                 seriesFourthMonthAgo.getData().add(new XYChart.Data<>(day, income.getAmount()));
             }
+
+            if (dayCounter > maxDayOfMonth) {
+                dayCounter = 1;
+            }
         }
 
         lineChart.getData().addAll(seriesCurrentMonth, seriesLastMonth, seriesThirdMonthAgo, seriesFourthMonthAgo);
@@ -114,19 +118,16 @@ public class IncomeChart extends InputForm {
     private void saveChartAsImage(Chart chart) {
         WritableImage image = chart.snapshot(new SnapshotParameters(), null);
 
-        // Fájl kiválasztása
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
         File file = fileChooser.showSaveDialog(new Stage());
 
-        // Kép mentése PNG formátumban
         if (file != null) {
             try {
                 RenderedImage renderedImage = SwingFXUtils.fromFXImage(image, null);
                 ImageIO.write(renderedImage, "png", file);
             } catch (IOException e) {
                 e.printStackTrace();
-                // Kezeljük az esetleges hibát
             }
         }
     }

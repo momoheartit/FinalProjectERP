@@ -27,7 +27,7 @@ public class AppController implements Initializable {
 
     IncomeController incomeController;
     PartnerController partnerController;
-
+    
     @FXML
     void loadIncomeFilter() {
         incomeController.newFilter();

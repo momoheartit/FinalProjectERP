@@ -18,8 +18,16 @@ public class InputField {
         label = new Label(text);
         field = createField();
 
-        String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
-        label.setStyle(labelStyle);
+            String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
+    label.setStyle(labelStyle);
+    
+    // Új rész: stílus beállítása fieldType alapján
+    String fieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';"
+            + "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
+    
+    if (field instanceof TextInputControl) {
+        ((TextInputControl) field).setStyle(fieldStyle);
+    }
     }
     
     public InputField(String text, FieldType fieldType) {
@@ -37,6 +45,7 @@ public class InputField {
         }
 
         String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
+        label.setStyle(labelStyle);
     }
     
     
