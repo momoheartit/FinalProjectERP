@@ -13,6 +13,7 @@ import com.finalProject.ERP.View.IncomeForm;
 import com.finalProject.ERP.View.IncomeTable;
 
 import java.util.List;
+import org.apache.poi.ss.formula.functions.T;
 
 public class IncomeController {
 
@@ -76,13 +77,17 @@ public class IncomeController {
             IncomeTable table = new IncomeTable(parent.getContainer());
             table.setItems(incomes);
 
-            table.addActionColumn("✔", (incomeEntity, index) -> {
+            table.addActionColumn("#0c8a43", "#ffffff", " :: ", (incomeEntity, index) -> {
                 editIncome(incomeEntity);
             });
-            table.addActionColumn("✖", (incomeEntity, index)
+            table.addActionColumn("#e6825e", "#ffffff", "ⓧ", (incomeEntity, index)
                     -> {
-                model.delete(incomeEntity);
-                showFiltered(lastFilteredList);
+                boolean confirmed = ConfirmationDialog.showDeleteConfirmation();
+
+                if (confirmed) {
+                    model.delete(incomeEntity);
+                    showFiltered(lastFilteredList);
+                }
             });
         } else {
             System.out.println("A JPQL lekérdezés null.");
@@ -118,13 +123,17 @@ public class IncomeController {
         IncomeTable table = new IncomeTable(parent.getContainer());
         table.setItems(notApproved);
 
-        table.addActionColumn("✔️", (incomeEntity, index) -> {
+        table.addActionColumn("#0c8a43", "#ffffff", " :: ", (incomeEntity, index) -> {
             editIncome(incomeEntity);
         });
-        table.addActionColumn("✖", (incomeEntity, index)
+        table.addActionColumn("#e6825e", "#ffffff", "ⓧ", (incomeEntity, index)
                 -> {
-            model.delete(incomeEntity);
-            notApproved();
+            boolean confirmed = ConfirmationDialog.showDeleteConfirmation();
+
+            if (confirmed) {
+                model.delete(incomeEntity);
+                notApproved();
+            }
         });
     }
 
@@ -136,4 +145,5 @@ public class IncomeController {
     public void statisticsButtonClick(IncomeChart aThis) {
         System.out.println("hát ez még nagyon kezdetleges te....");
     }
+
 }

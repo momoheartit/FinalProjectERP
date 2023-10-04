@@ -14,7 +14,7 @@ public class Table<T> extends TableView<T> {
 
     public Table(Pane parent) {
         super();
-        this.setStyle("-fx-control-inner-background: #3e5c76; -fx-accent: #blue; -fx-border-color: black; -fx-border-width: 3;");
+        this.setStyle("-fx-control-inner-background: #3e5c76; -fx-accent: #3677e0; -fx-border-color: black; -fx-border-width: 3;");
         parent.getChildren().add(this);
     }
 
@@ -26,7 +26,7 @@ public class Table<T> extends TableView<T> {
         getColumns().add(column);
     }
 
-    public void addActionColumn(String buttonText, BiConsumer<T, Integer> onClick) {
+    public void addActionColumn(String buttonColor, String buttonTextColor,String buttonText, BiConsumer<T, Integer> onClick) {
         TableColumn<T, String> column = new TableColumn<>();
 
         Callback< TableColumn<T, String>, TableCell<T, String>> factory;
@@ -42,11 +42,13 @@ public class Table<T> extends TableView<T> {
                             setGraphic(null);
                         } else {
                             Button button = new Button(buttonText);
-                            button.setStyle("-fx-background-color: #3e5c76; -fx-text-fill: #white; -fx-border-width: 1; -fx-font-family: 'Britannic Bold'; -fx-font-size: 14; -fx-cursor: hand;");
+                            button.setStyle("-fx-background-color: " + buttonColor + "; -fx-text-fill: " + buttonTextColor + "; -fx-border-width: 1; -fx-font-family: 'Britannic Bold'; -fx-font-size: 14; -fx-cursor: hand;");
                             button.setOnAction(evt
                                     -> {
                                 int index = getIndex();
                                 T entity = getTableRow().getItem();
+                                
+                                System.out.println("Button:" + buttonText);
 
                                 onClick.accept(entity, index);
                             });
