@@ -32,7 +32,7 @@ public class IncomeFilter extends InputForm {
         add("amount", new InputField(null, InputField.FieldType.NUMBER), 2, 1);
               
         // 4.sor
-        add("projectComboBox", new InputComboBox("Project's name:", new String[]{"=", "≠"}), 3, 0);
+        add("projectComboBox", new InputComboBox("Project name:", new String[]{"=", "≠"}), 3, 0);
         add("project", new InputField(null, InputField.FieldType.LETTER), 3, 1);
         
         // 4. sor

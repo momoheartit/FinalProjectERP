@@ -32,26 +32,26 @@ public class PartnerForm extends InputForm {
             if (instance == null) {
                 instance = new PartnerEntity();
             }
-        String name = part.getValue("name").trim();
-        String contact = part.getValue("contact").trim();
+            String name = part.getValue("name").trim();
+            String contact = part.getValue("contact").trim();
 
-        if (name.isEmpty() || contact.isEmpty()) {
-            // Hiba esetén hibaüzenet megjelenítése
-            ErrorDialog.showError("Mandatory fields:\n"
-                    + "- Partner's name\n"
-                    + "- Contact");
-        } else {
-            try {
-                instance.setName(name);
-                instance.setContact(contact);
-
-                onClick.accept(instance);
-                instance = null;
-            } catch (Exception e) {
+            if (name.isEmpty() || contact.isEmpty()) {
                 // Hiba esetén hibaüzenet megjelenítése
-                ErrorDialog.showError("Unexpected error occurred.");
+                ErrorDialog.showError("Mandatory fields:\n"
+                        + "- Partner's name\n"
+                        + "- Contact");
+            } else {
+                try {
+                    instance.setName(name);
+                    instance.setContact(contact);
+
+                    onClick.accept(instance);
+                    instance = null;
+                } catch (Exception e) {
+                    // Hiba esetén hibaüzenet megjelenítése
+                    ErrorDialog.showError("Unexpected error occurred.");
+                }
             }
-        }
         }, 3, 0);
     }
 }

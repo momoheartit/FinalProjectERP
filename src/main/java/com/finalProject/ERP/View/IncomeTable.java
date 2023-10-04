@@ -34,7 +34,7 @@ public class IncomeTable extends Table<IncomeEntity> {
         addColumn("Approved", "approved", 95);
                 
         String buttonFontStyle
-                = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 25;";
+                = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; -fx-font-family: 'Britannic Bold'; -fx-font-size: 16;";
         exportButton.setStyle(buttonFontStyle);
         
         exportButton.setOnAction(event -> exportToExcel());

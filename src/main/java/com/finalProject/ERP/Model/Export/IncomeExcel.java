@@ -32,7 +32,7 @@ public class IncomeExcel {
                 row.createCell(1).setCellValue(income.getPartnerName());
                 row.createCell(2).setCellValue(income.getAmount());
                 row.createCell(3).setCellValue(income.getProject());
-                row.createCell(4).setCellValue(income.getCreated().toString());
+                row.createCell(4).setCellValue(income.getCreated());//.toString());
                 if (income.getApproved() != null) {
                     row.createCell(5).setCellValue(income.getApproved().toString());
                 }
