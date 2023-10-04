@@ -47,8 +47,6 @@ public class Table<T> extends TableView<T> {
                                     -> {
                                 int index = getIndex();
                                 T entity = getTableRow().getItem();
-                                
-                                System.out.println("Button:" + buttonText);
 
                                 onClick.accept(entity, index);
                             });
