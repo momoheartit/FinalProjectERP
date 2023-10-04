@@ -11,9 +11,9 @@ import com.finalProject.ERP.View.IncomeChart;
 import com.finalProject.ERP.View.IncomeFilter;
 import com.finalProject.ERP.View.IncomeForm;
 import com.finalProject.ERP.View.IncomeTable;
-
 import java.util.List;
-import org.apache.poi.ss.formula.functions.T;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class IncomeController {
 
@@ -48,8 +48,8 @@ public class IncomeController {
     }
 
     public void searchButtonClick(InputForm form) {
-        List<IncomeCondition> filteredList = IncomeCondition.createConditionsList(form);
 
+        List<IncomeCondition> filteredList = IncomeCondition.createConditionsList(form);
         jpqlQuery = incomeJpqlBuilder.buildQuery(filteredList);
 
         if (jpqlQuery != null) {
@@ -144,6 +144,14 @@ public class IncomeController {
 
     public void statisticsButtonClick(IncomeChart aThis) {
         System.out.println("hát ez még nagyon kezdetleges te....");
+    }
+
+    public void showErrorMessageBox(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Hiba");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

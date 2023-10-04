@@ -9,7 +9,6 @@ public class ConfirmationDialog {
     public static boolean showDeleteConfirmation() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        // Beállítások, stílusok, ikonok, stb.
 
         alert.setTitle("Confirm deletion");
         alert.setHeaderText("Are you sure you want to delete it?");

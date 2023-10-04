@@ -1,7 +1,6 @@
 
 package com.finalProject.ERP.View.GUI;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import javafx.scene.control.Control;
 import javafx.scene.control.DatePicker;
 
@@ -41,6 +40,8 @@ public class InputDatePicker extends InputField {
                 datePicker.getEditor().getStyleClass().remove("date-picker-inner-focused");
             }
         });
+        datePicker.setEditable(false);
+
 
         return datePicker;
     }
