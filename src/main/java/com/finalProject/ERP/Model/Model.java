@@ -35,12 +35,22 @@ public class Model {
         partnerEntityRepository.save(partner);
     }
 
+    public List<IncomeEntity> findUnapproved() {
+        return (List<IncomeEntity>) incomeEntityRepository.findAllUnapprovedIncomes();
+    }
+
     public List<IncomeEntity> getAllIncome() {
         return (List<IncomeEntity>) incomeEntityRepository.findAllByOrderByCreatedDesc();
     }
 
-    public List<IncomeEntity> findFirst3ByOrderByIdAsc() {
-        return (List<IncomeEntity>) incomeEntityRepository.findFirst3ByOrderByIdAsc();
+    public List<IncomeEntity> getAllIncomeWithinLastYear() {
+        LocalDate oneYearAgo = LocalDate.now().minusYears(1);
+        return incomeEntityRepository.findAllByCreatedAfter(oneYearAgo);
+    }
+
+    public List<IncomeEntity> getAllIncomeWithinLastThreeMonths() {
+        LocalDate threeMonthsAgo = LocalDate.now().minusMonths(3);
+        return incomeEntityRepository.findAllByCreatedAfter(threeMonthsAgo);
     }
 
     public List<PartnerEntity> getPartners() {

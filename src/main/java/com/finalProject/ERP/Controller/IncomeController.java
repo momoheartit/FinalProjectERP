@@ -7,6 +7,7 @@ import com.finalProject.ERP.Model.PartnerEntity;
 import com.finalProject.ERP.Model.jpqlBuilder.IncomeCondition;
 import com.finalProject.ERP.Model.jpqlBuilder.IncomeJpqlBuilder;
 import com.finalProject.ERP.View.GUI.InputForm;
+import com.finalProject.ERP.View.IncomeChart;
 import com.finalProject.ERP.View.IncomeFilter;
 import com.finalProject.ERP.View.IncomeForm;
 import com.finalProject.ERP.View.IncomeTable;
@@ -20,7 +21,6 @@ public class IncomeController {
     private IncomeJpqlBuilder incomeJpqlBuilder;
     private String jpqlQuery;  // JPQL lekérdezés tárolásához
     private List<IncomeCondition> lastFilteredList;
-    
 
     public IncomeController(AppController parent) {
         this.parent = parent;
@@ -37,7 +37,7 @@ public class IncomeController {
         form.submit("Create", inc -> {
             model.save(inc);
             form.clear();
-            
+
         });
     }
 
@@ -76,10 +76,10 @@ public class IncomeController {
             IncomeTable table = new IncomeTable(parent.getContainer());
             table.setItems(incomes);
 
-            table.addActionColumn("...", (incomeEntity, index) -> {
+            table.addActionColumn("✔", (incomeEntity, index) -> {
                 editIncome(incomeEntity);
             });
-            table.addActionColumn("X", (incomeEntity, index)
+            table.addActionColumn("✖", (incomeEntity, index)
                     -> {
                 model.delete(incomeEntity);
                 showFiltered(lastFilteredList);
@@ -109,5 +109,31 @@ public class IncomeController {
 
     public List<IncomeCondition> getLastFilteredList() {
         return lastFilteredList;
+    }
+
+    public void notApproved() {
+        parent.initView("Not approved yet");
+
+        List<IncomeEntity> notApproved = model.findUnapproved();
+        IncomeTable table = new IncomeTable(parent.getContainer());
+        table.setItems(notApproved);
+
+        table.addActionColumn("✔️", (incomeEntity, index) -> {
+            editIncome(incomeEntity);
+        });
+        table.addActionColumn("✖", (incomeEntity, index)
+                -> {
+            model.delete(incomeEntity);
+            notApproved();
+        });
+    }
+
+    void newStatistics() {
+        parent.initView("Making statistics");
+        IncomeChart chart = new IncomeChart(parent.getContainer(), this, model);
+    }
+
+    public void statisticsButtonClick(IncomeChart aThis) {
+        System.out.println("hát ez még nagyon kezdetleges te....");
     }
 }

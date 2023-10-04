@@ -37,6 +37,16 @@ public class AppController implements Initializable {
     public void newIncome() {
         incomeController.newIncome();
     }
+    
+    @FXML
+    public void notApproved() {
+        incomeController.notApproved();
+    }
+    
+    @FXML
+    public void newStatistics() {
+        incomeController.newStatistics();
+    }
 
     @FXML
     void loadPartnerFilter() {

@@ -38,9 +38,7 @@ public class InputField {
         if (field instanceof TextInputControl) {
             return ((TextInputControl) field).getText();
         } else if (field instanceof DatePicker) {
-            System.out.println("GetValues életbe lép1");
             LocalDate date = ((DatePicker) field).getValue();
-            System.out.println("GetValues életbe lép");
             return (date != null) ? date.toString() : null;
         } else if (field instanceof CheckBox) {
             return String.valueOf(((CheckBox) field).isSelected());
@@ -58,7 +56,6 @@ public class InputField {
             textInputControl.setText(value);
         } else if (field instanceof DatePicker) {
             DatePicker datePicker = (DatePicker) field;
-            System.out.println("Set Values életbe lép");
             if (value != null && !value.isEmpty()) {
                 datePicker.setValue(LocalDate.parse(value));
             } else {

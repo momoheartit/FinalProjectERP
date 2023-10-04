@@ -35,6 +35,27 @@
                            </font>
                         </FontAwesomeIconView>
                      </graphic></Button>
+                  <Button fx:id="notApprovedButton" mnemonicParsing="false" onAction="#notApproved" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Not approved">
+                     <graphic>
+                        <FontAwesomeIconView fill="#55828b" size="14" text="" wrappingWidth="14.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="newStatistics" mnemonicParsing="false" onAction="#newStatistics" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Statistics">
+                     <graphic>
+                        <FontAwesomeIconView fill="#55828b" size="18" text="" wrappingWidth="24.0">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </FontAwesomeIconView>
+                     </graphic>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                   <Button fx:id="partnersButton" mnemonicParsing="false" onAction="#loadPartnerFilter" prefHeight="40.0" prefWidth="225.0" styleClass="button-style" stylesheets="@look.css" text="Partners">
                      <graphic>
                         <FontAwesomeIconView fill="#55828b" glyphName="USERS">
@@ -70,7 +91,8 @@
       <AnchorPane fx:id="inputController" layoutX="225.0" layoutY="125.0" prefHeight="625.0" prefWidth="775.0" style="-fx-background-color: #e4ebed;">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding></AnchorPane>
+         </padding>
+      </AnchorPane>
       <Label fx:id="txtTitle" layoutX="225.0" prefHeight="125.0" prefWidth="775.0" styleClass="labelTitle" stylesheets="@look.css" text="Enterprise Resource Planning 2023." textFill="#3e5c76">
          <opaqueInsets>
             <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />

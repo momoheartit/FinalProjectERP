@@ -62,7 +62,7 @@ public class InputForm extends GridPane {
 
         String buttonFontStyle
                 = "-fx-background-color: #3e5c76; -fx-text-fill: #0d1321; -fx-border-width: 2; "
-                + "-fx-font-family: 'Britannic Bold'; -fx-font-size: 25; -fx-cursor: hand;";
+                + "-fx-font-family: 'Britannic Bold'; -fx-font-size: 18; -fx-cursor: hand;";
         button.setStyle(buttonFontStyle);
 
         add(button, col, row, 2, 1);

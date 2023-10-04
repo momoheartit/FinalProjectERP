@@ -71,7 +71,7 @@ public class PartnerController {
             PartnerTable table = new PartnerTable(parent.getContainer());
             table.setItems(partners);
 
-            table.addActionColumn("...", (partnerEntity, index) -> {
+            table.addActionColumn("✔", (partnerEntity, index) -> {
                 editPartner(partnerEntity);
             });
 //            table.addActionColumn("X", (partnerEntity, index)
