@@ -18,9 +18,9 @@ public class IncomeForm extends InputForm {
     public IncomeForm(Pane parent, List<PartnerEntity> partners) {
         super(parent);
 
-        add("partner", new InputField("Partner"), 1, 0);
-        add("amount", new InputField("Amount"), 2, 0);
-        add("project", new InputField("Project"), 3, 0);
+        add("partner", new InputField("Partner", InputField.FieldType.NUMBER), 1, 0);
+        add("amount", new InputField("Amount", InputField.FieldType.NUMBER), 2, 0);
+        add("project", new InputField("Project", InputField.FieldType.LETTER), 3, 0);
         add("created", new InputDatePicker("Created"), 4, 0);
         add("approved", new InputDatePicker("Approved"), 5, 0);
 

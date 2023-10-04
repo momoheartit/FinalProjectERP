@@ -21,19 +21,19 @@ public class IncomeFilter extends InputForm {
         this.controller = controller;
         
         add("idComboBox", new InputComboBox("ID:", new String[]{"=", "≠", ">", "<"}), 0, 0);
-        add("id", new InputField(null), 0, 1);
+        add("id", new InputField(null, InputField.FieldType.NUMBER), 0, 1);
         
         // 2. sor
         add("partnerComboBox", new InputComboBox("Partner's ID:", new String[]{"=", "≠", ">", "<"}), 1, 0);
-        add("partner", new InputField(null), 1, 1);
+        add("partner", new InputField(null, InputField.FieldType.NUMBER), 1, 1);
         
         // 3. sor
         add("amountComboBox", new InputComboBox("Amount:", new String[]{"=", "≠", ">", "<"}), 2, 0);
-        add("amount", new InputField(null), 2, 1);
+        add("amount", new InputField(null, InputField.FieldType.NUMBER), 2, 1);
               
         // 4.sor
         add("projectComboBox", new InputComboBox("Project's name:", new String[]{"=", "≠"}), 3, 0);
-        add("project", new InputField(null), 3, 1);
+        add("project", new InputField(null, InputField.FieldType.LETTER), 3, 1);
         
         // 4. sor
         add("createdComboBox", new InputComboBox("Created:", new String[]{"=", "≠", ">", "<"}), 4, 0);

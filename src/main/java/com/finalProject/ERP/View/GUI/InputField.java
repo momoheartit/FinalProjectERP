@@ -21,7 +21,25 @@ public class InputField {
         String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
         label.setStyle(labelStyle);
     }
+    
+    public InputField(String text, FieldType fieldType) {
+        label = new Label(text);
 
+        switch (fieldType) {
+            case NUMBER:
+                field = createNumberField();
+                break;
+            case LETTER:
+                field = createLetterField();
+                break;
+            default:
+                field = createField(); // Alapértelmezett eset
+        }
+
+        String labelStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';";
+    }
+    
+    
     public Label getLabel() {
         return label;
     }
@@ -83,4 +101,42 @@ public class InputField {
 
         return textField;
     }
+
+    protected Control createLetterField() {
+        TextField textField = new TextField();
+        String textFieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';"
+                + "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
+        textField.setStyle(textFieldStyle);
+
+        // Csak betűk engedélyezése
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("^[a-zA-Z]*$")) {
+                textField.setText(oldValue);
+            }
+        });
+
+        return textField;
+    }
+
+    protected Control createNumberField() {
+        TextField textField = new TextField();
+        String textFieldStyle = "-fx-font-size: 16px; -fx-font-family: 'Britannic Bold';"
+                + "-fx-background-color: #b8c4cf; -fx-cursor: hand; -fx-border-color: #0d1321;";
+        textField.setStyle(textFieldStyle);
+
+        // Csak számok engedélyezése
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        return textField;
+    }
+
+    public enum FieldType {
+        NUMBER,
+        LETTER
+    }
+
 }

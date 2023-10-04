@@ -18,13 +18,13 @@ public class PartnerFilter extends InputForm {
         super(parent);
         this.controller = controller;
         add("idComboBox", new InputComboBox("ID:", new String[]{"=", "≠", ">", "<"}), 0, 0);
-        add("id", new InputField(null), 0, 1);
+        add("id", new InputField(null, InputField.FieldType.NUMBER), 0, 1);
 
         add("nameComboBox", new InputComboBox("Name contains:", new String[]{"=", "≠"}), 1, 0);
-        add("name", new InputField(null), 1, 1);
+        add("name", new InputField(null, InputField.FieldType.LETTER), 1, 1);
 
         add("contactComboBox", new InputComboBox("Contact contains:", new String[]{"=", "≠"}), 2, 0);
-        add("contact", new InputField(null), 2, 1);
+        add("contact", new InputField(null, InputField.FieldType.LETTER), 2, 1);
 
         button("Search", event -> searchButton(), 3, 0);
 
