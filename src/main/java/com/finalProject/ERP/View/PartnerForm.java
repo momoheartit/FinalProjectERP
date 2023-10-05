@@ -20,7 +20,9 @@ public class PartnerForm extends InputForm {
     }
 
     public void setValues(PartnerEntity partner) {
-        setValue("name", partner.getName());
+        if (partner.getName() != null) {
+            setValue("name", partner.getName());
+        }
         setValue("contact", partner.getContact());
 
         instance = partner;

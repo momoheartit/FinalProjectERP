@@ -35,8 +35,12 @@ public class IncomeForm extends InputForm {
         }
         setValue("amount", Integer.toString(income.getAmount()));
         setValue("project", income.getProject());
-        setValue("created", income.getCreated() != null ? income.getApproved().toString() : null);
-        setValue("approved", income.getApproved() != null ? income.getApproved().toString() : null);
+        LocalDate created = income.getCreated();
+        setValue("created", created != null ? created.toString() : null);
+        //setValue("created", income.getCreated() != null ? income.getApproved().toString() : null);
+        LocalDate approved = income.getApproved();
+        setValue("approved", approved != null ? approved.toString() : null);
+        //setValue("approved", income.getApproved() != null ? income.getApproved().toString() : null);
 
         instance = income;
     }
@@ -47,31 +51,37 @@ public class IncomeForm extends InputForm {
                 instance = new IncomeEntity();
             }
             try {
-                int partnerX = Integer.parseInt(form.getValue("partner")) - 1;
-                PartnerEntity partner = partners.get(partnerX);
-                instance.setPartner(partner);
+                int partnerId = Integer.parseInt(form.getValue("partner"));
 
-                instance.setAmount(Integer.parseInt(form.getValue("amount")));
-                instance.setProject(form.getValue("project"));
+                if (partnerId >= 1 && partnerId <= partners.size()) {
+                    int partnerX = Integer.parseInt(form.getValue("partner")) - 1;
+                    PartnerEntity partner = partners.get(partnerX);
+                    instance.setPartner(partner);
 
-                String createdText = form.getValue("created");
-                if (createdText != null && !createdText.isEmpty()) {
-                    instance.setCreated(LocalDate.parse(createdText));
+                    instance.setAmount(Integer.parseInt(form.getValue("amount")));
+                    instance.setProject(form.getValue("project"));
+
+                    String createdText = form.getValue("created");
+                    if (createdText != null && !createdText.isEmpty()) {
+                        instance.setCreated(LocalDate.parse(createdText));
+                    } else {
+                        instance.setCreated(null);
+                    }
+
+                    String approvedText = form.getValue("approved");
+                    if (approvedText != null && !approvedText.isEmpty()) {
+                        instance.setApproved(LocalDate.parse(approvedText));
+                    } else {
+                        instance.setApproved(null);
+                    }
+
+                    System.out.println("Eredmény: " + instance);
+
+                    onClick.accept(instance);
+                    instance = null;
                 } else {
-                    instance.setCreated(null);
+                    ErrorDialog.showError("Invalid partner ID. Please enter a valid ID.");
                 }
-
-                String approvedText = form.getValue("approved");
-                if (approvedText != null && !approvedText.isEmpty()) {
-                    instance.setApproved(LocalDate.parse(approvedText));
-                } else {
-                    instance.setApproved(null);
-                }
-
-                System.out.println("Eredmény: " + instance);
-
-                onClick.accept(instance);
-                instance = null;
             } catch (Exception e) {
                 // Hiba esetén hibaüzenet megjelenítése
                 ErrorDialog.showError("Mandatory fields:\n"
