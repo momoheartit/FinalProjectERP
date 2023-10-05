@@ -144,14 +144,6 @@ public class IncomeController {
     public void statisticsButtonClick(IncomeChart aThis) {
         System.out.println("hát ez még nagyon kezdetleges te....");
     }
-
-//    public void showErrorMessageBox(String message) {
-//        Alert alert = new Alert(AlertType.ERROR);
-//        alert.setTitle("Hiba");
-//        alert.setHeaderText(null);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
     
     /////////////////////////A tesztek futtatásához:
     public void setModel(Model model){

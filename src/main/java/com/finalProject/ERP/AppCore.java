@@ -16,7 +16,7 @@ public class AppCore extends Application {
 
         Scene scene = new Scene(loader.load(),1000,750);
         stage.setScene(scene);
-        stage.setTitle("Feladatok kezelése");
+        stage.setTitle("Made by MesterMunka Zrt 2023. - Enterprise Resource Planning");
         stage.show();
     }
 
